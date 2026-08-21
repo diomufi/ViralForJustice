@@ -2223,33 +2223,49 @@ html, body {
   }
   
   /* CTA Box Phone Fix */
+  .section-cta-report {
+    padding: 1rem 0 2rem !important;
+    overflow: hidden !important;
+  }
   .report-cta-box {
-    grid-template-columns: 1fr !important;
-    padding: 1.5rem 1rem !important;
-    gap: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1.25rem 1rem !important;
+    gap: 1.25rem !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
   }
+  .report-cta-text {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
   .report-cta-text h2 {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
+    line-height: 1.25 !important;
   }
   .report-cta-action {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
   }
   .card-report-preview {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    padding: 1.25rem 1rem !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+    border: 1px solid var(--color-black-border) !important;
   }
   .crp-btn-action, .crp-btn-status {
-    font-size: 0.85rem !important;
+    font-size: 0.825rem !important;
     padding: 0.65rem 0.75rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
     text-align: center;
+    white-space: normal !important;
   }
 
   .privacy-selector-card {
