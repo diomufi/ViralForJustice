@@ -302,7 +302,29 @@ function initSearch() {
 // 4. CASE TRACKER RENDER & FILTER
 // ==========================================
 
+function updateTrackerCounters() {
+  const countAll = caseTrackerData.length;
+  const countInv = caseTrackerData.filter(i => i.status === 'investigasi').length;
+  const countVir = caseTrackerData.filter(i => i.status === 'viral').length;
+  const countHuk = caseTrackerData.filter(i => i.status === 'hukum').length;
+  const countTun = caseTrackerData.filter(i => i.status === 'tuntas').length;
+
+  const tabs = document.querySelectorAll(".tracker-filter-tabs .tracker-tab");
+  tabs.forEach(tab => {
+    const status = tab.getAttribute("data-status");
+    if (status === "all") tab.textContent = `Semua Status (${countAll})`;
+    if (status === "investigasi") tab.textContent = `🟡 Investigasi (${countInv})`;
+    if (status === "viral") tab.textContent = `🔴 Viralisasi (${countVir})`;
+    if (status === "hukum") tab.textContent = `🔵 Proses Hukum (${countHuk})`;
+    if (status === "tuntas") tab.textContent = `🟢 Keadilan Tercapai (${countTun})`;
+  });
+
+  const badge = document.querySelector(".nav-menu .badge-count");
+  if (badge) badge.textContent = countAll;
+}
+
 function renderTrackerCards(filter = "all") {
+  updateTrackerCounters();
   const grid = document.getElementById("trackerGrid");
   if (!grid) return;
 
