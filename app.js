@@ -20,7 +20,7 @@ const articlesData = [
     isVerified: true,
     urgency: "Manifesto Resmi",
     content: `
-      <p class="lead"><strong>JAKARTA</strong> — Selamat datang di <strong>VIRAL FOR JUSTICE</strong>. Platform ini didirikan atas sebuah kesadaran bersama: bahwa di era digital saat ini, keterbukaan informasi dan solidaritas publik adalah pilar terkuat dalam menuntut kepastian hukum yang adil dan transparan bagi seluruh lapisan masyarakat.</p>
+      <p class="lead"><strong>SURABAYA</strong> — Selamat datang di <strong>VIRAL FOR JUSTICE</strong>. Platform ini didirikan atas sebuah kesadaran bersama: bahwa di era digital saat ini, keterbukaan informasi dan solidaritas publik adalah pilar terkuat dalam menuntut kepastian hukum yang adil dan transparan bagi seluruh lapisan masyarakat.</p>
       
       <h3>Mengapa Viral For Justice Lahir?</h3>
       <p>Kita sering mendengar fenomena <em>"No Viral, No Justice"</em> — ketika suatu ketidakadilan, perampasan hak, atau tindak pidana baru mendapat atensi serius dari aparat penegak hukum setelah menjadi perbincangan luas di media sosial. Namun, viralisasi di media sosial sering kali simpang siur, rawan disusupi disinformasi (hoaks), dan kerap mereda begitu saja sebelum keadilan benar-benar tercapai.</p>
