@@ -243,7 +243,7 @@ function renderNewsGrid(filter = "all", searchQuery = "") {
             <button class="btn-react" id="btn-support-${item.id}" onclick="reactArticle(${item.id}, 'support')" title="Kawal Kasus">
               <i class="fa-solid fa-hand-fist"></i> <span>${formatNumber(item.supports)}</span>
             </button>
-            <button class="btn-react" onclick="shareArticle('${item.title.replace(/'/g, "\\'")}')" title="Bagikan Kasus">
+            <button class="btn-react" onclick="shareArticle('${item.title.replace(/'/g, "\\'")}', ${item.id})" title="Bagikan Kasus">
               <i class="fa-solid fa-share-nodes"></i> <span>${formatNumber(item.shares)}</span>
             </button>
           </div>
@@ -465,26 +465,28 @@ function closeReportModal() {
 }
 
 function initDropzone() {
-  const dropzone = document.getElementById("dropzone");
-  const fileInput = document.getElementById("fileInput");
+  // Use correct IDs matching the HTML form
+  const dropzone = document.getElementById("fileDropzone");
+  const fileInput = document.getElementById("evidenceFileInput");
   const preview = document.getElementById("fileListPreview");
 
   if (!dropzone || !fileInput) return;
 
-  dropzone.addEventListener("click", () => fileInput.click());
-
   dropzone.addEventListener("dragover", (e) => {
     e.preventDefault();
     dropzone.style.borderColor = "var(--color-crimson)";
+    dropzone.style.background = "rgba(200, 16, 46, 0.05)";
   });
 
   dropzone.addEventListener("dragleave", () => {
-    dropzone.style.borderColor = "var(--color-gray-400)";
+    dropzone.style.borderColor = "";
+    dropzone.style.background = "";
   });
 
   dropzone.addEventListener("drop", (e) => {
     e.preventDefault();
-    dropzone.style.borderColor = "var(--color-gray-400)";
+    dropzone.style.borderColor = "";
+    dropzone.style.background = "";
     handleFiles(e.dataTransfer.files);
   });
 
@@ -510,6 +512,17 @@ function initDropzone() {
   }
 }
 
+// B2+B10 FIX: Toggle identity fields based on reporter type selection
+function toggleIdentityFields(value) {
+  const verifiedFields = document.getElementById("verifiedFields");
+  if (!verifiedFields) return;
+  if (value === 'verified') {
+    verifiedFields.classList.remove("hidden");
+  } else {
+    verifiedFields.classList.add("hidden");
+  }
+}
+
 function removeFile(index) {
   uploadedFiles.splice(index, 1);
   const preview = document.getElementById("fileListPreview");
@@ -523,17 +536,9 @@ function removeFile(index) {
   }
 }
 
+// setPrivacy kept for backward compatibility
 function setPrivacy(type) {
-  const cards = document.querySelectorAll(".privacy-card");
-  cards.forEach(c => c.classList.remove("selected"));
-  
-  if (type === 'anon') {
-    cards[0].classList.add("selected");
-    document.getElementById("reporterNameGroup").style.display = "none";
-  } else {
-    cards[1].classList.add("selected");
-    document.getElementById("reporterNameGroup").style.display = "block";
-  }
+  toggleIdentityFields(type === 'anon' ? 'anonymous' : 'verified');
 }
 
 function submitWhistleblowerReport(e) {
@@ -693,11 +698,16 @@ function reactArticle(id, type) {
   }
 }
 
-function shareArticle(title) {
-  const url = window.location.href;
-  if (articlesData.length > 0) {
-    articlesData[0].shares = (articlesData[0].shares || 0) + 1;
+// B5 FIX: Accept article id to increment correct article's shares
+function shareArticle(title, id) {
+  const url = window.location.origin + '/article.html?id=' + (id || 1);
+  // Increment shares on correct article
+  const article = articlesData.find(a => a.id === (id || 1));
+  if (article) {
+    article.shares = (article.shares || 0) + 1;
     localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+    // Re-render to update share count on card
+    const shareBtn = document.querySelector(`article:has(a[href="article.html?id=${id}"]`) ;
     renderNewsGrid(activeCategory);
   }
   
@@ -713,14 +723,15 @@ function shareArticle(title) {
   }
 }
 
+// B6 FIX: Dynamic count instead of hardcoded "6"
 function loadMoreArticles() {
   const btn = document.getElementById("loadMoreBtn");
   if (btn) {
     btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memuat Laporan Tambahan...`;
     setTimeout(() => {
-      btn.innerHTML = `<i class="fa-solid fa-check"></i> Seluruh Kasus Telah Ditampilkan`;
+      btn.innerHTML = `<i class="fa-solid fa-check"></i> Seluruh ${articlesData.length} Kasus Telah Ditampilkan`;
       btn.disabled = true;
-      showToast("Semua 6 laporan investigasi aktif telah dimuat.");
+      showToast(`Semua ${articlesData.length} laporan investigasi aktif telah dimuat.`);
     }, 800);
   }
 }

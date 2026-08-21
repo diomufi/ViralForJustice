@@ -510,7 +510,16 @@
     }
 
     function approveAndPublishDirect(id) {
-      showToast('🎉 Berita resmi disetujui Pemimpin Redaksi dan telah tayang ke publik!');
+      const article = articlesData.find(a => a.id === id);
+      if (!article) {
+        showToast('⚠️ Artikel tidak ditemukan.');
+        return;
+      }
+      article.approvedByPemred = true;
+      article.approvedAt = new Date().toLocaleString('id-ID');
+      localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+      renderPemredDashboard();
+      showToast(`🎉 Artikel "${article.title.substring(0, 40)}..." telah disetujui Pemred dan tayang ke publik!`);
     }
 
     function deleteArticlePemred(id) {

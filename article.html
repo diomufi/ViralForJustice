@@ -12,7 +12,7 @@
   <meta id="ogDesc" property="og:description" content="Platform Jurnalisme Advokasi dan Pengawalan Keadilan Publik.">
   <meta id="ogImage" property="og:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80">
   <meta property="og:type" content="article">
-  <meta id="ogUrl" property="og:url" content="https://viralforjustice.com/article.html">
+  <meta id="ogUrl" property="og:url" content="https://viralforjustice.web.id/article.html">
 
   <title id="pageTitle">Memuat Berita... | VIRAL FOR JUSTICE</title>
   
@@ -364,7 +364,7 @@
           <li><a href="index.html">Beranda Portal</a></li>
           <li><a href="index.html#caseTrackerSection">Public Case Tracker</a></li>
           <li><a href="index.html#suaraWargaSection">Kirim Pengaduan</a></li>
-          <li><a href="admin.html">Portal Redaksi (CMS)</a></li>
+          <li><a href="index.html#cekFaktaSection">Standar Cek Fakta</a></li>
         </ul>
       </div>
 
@@ -442,9 +442,10 @@
           "publisher": {
             "@type": "NewsMediaOrganization",
             "name": "VIRAL FOR JUSTICE",
+            "url": "https://viralforjustice.web.id",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://viralforjustice.com/logo.png"
+              "url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=500&q=80"
             }
           },
           "description": currentArticleData.excerpt
@@ -464,7 +465,9 @@
       document.getElementById('articleImage').alt = currentArticleData.title;
       document.getElementById('articleBody').innerHTML = currentArticleData.content;
       document.getElementById('supportCount').textContent = formatNumber(currentArticleData.supports);
-    }    function handleSupportCurrentArticle() {
+    }
+
+    function handleSupportCurrentArticle() {
       if (currentArticleData) {
         const key = `v4j_reacted_art_${currentArticleData.id}_support`;
         if (localStorage.getItem(key)) {
