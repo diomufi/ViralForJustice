@@ -435,6 +435,29 @@
     </main>
   </div>
 
+  <!-- MODAL: Pemred Decrypted Vault Inspector -->
+  <div class="modal-overlay" id="pemredVaultModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-header bg-black text-white">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-vault text-2xl text-crimson"></i>
+          <div>
+            <h3>Whistleblower Vault (Akses Pemimpin Redaksi)</h3>
+            <p>Dekripsi Berkas Pengaduan Masyarakat Terverifikasi</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closePemredVaultModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="pemredVaultModalBody">
+        <!-- Injected via JS -->
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between;">
+        <span class="text-xs text-muted"><i class="fa-solid fa-lock text-crimson"></i> Akses Super Admin Pemred Terenkripsi</span>
+        <button type="button" class="btn btn-secondary" onclick="closePemredVaultModal()">Tutup Berkas</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification Container -->
   <div id="toastContainer" class="toast-container"></div>
 
@@ -447,7 +470,11 @@
       
       const target = document.getElementById(tabId);
       if (target) target.classList.remove('hidden');
-      event.currentTarget.classList.add('active');
+      
+      const navItem = Array.from(document.querySelectorAll('.dash-nav-item')).find(item => {
+        return item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId);
+      });
+      if (navItem) navItem.classList.add('active');
     }
 
     function renderPemredDashboard() {
@@ -469,26 +496,37 @@
             <td>
               <div style="display: flex; gap: 0.35rem;">
                 <a href="article.html?id=${a.id}" target="_blank" class="btn btn-sm-outline"><i class="fa-solid fa-eye"></i> Tinjau</a>
-                <button class="btn btn-sm-outline" style="border-color: #000000; color: #000000;" onclick="deleteArticlePemred(${a.id})"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn btn-sm-outline" style="border-color: #000000; color: #000000;" onclick="deleteArticlePemred(${a.id})" title="Hapus Artikel"><i class="fa-solid fa-trash"></i></button>
               </div>
             </td>
           </tr>
         `).join('');
       }
 
-      // Render Approval Queue
+      // Render Approval Queue - dynamically shows approval state
       const aptbody = document.getElementById('pemredApprovalTable');
       if (aptbody) {
-        aptbody.innerHTML = articlesData.slice(0, 2).map(a => `
-          <tr>
-            <td><strong>${a.title}</strong></td>
-            <td>${a.author}</td>
-            <td><span class="text-xs font-bold" style="color: #10B981;"><i class="fa-solid fa-shield-check"></i> Legal Approved</span></td>
-            <td>
-              <button class="btn btn-crimson btn-sm" onclick="approveAndPublishDirect(${a.id})"><i class="fa-solid fa-check-double"></i> Approve & Rilis Publik</button>
-            </td>
-          </tr>
-        `).join('');
+        aptbody.innerHTML = articlesData.map(a => {
+          const isApproved = a.approvedByPemred || false;
+          return `
+            <tr>
+              <td><strong>${a.title}</strong></td>
+              <td>${a.author}</td>
+              <td>
+                ${isApproved 
+                  ? '<span class="text-xs font-bold" style="color: #10B981;"><i class="fa-solid fa-circle-check"></i> Rilis Disetujui Pemred</span>'
+                  : '<span class="text-xs font-bold" style="color: #F59E0B;"><i class="fa-solid fa-clock"></i> Siap Divalidasi</span>'
+                }
+              </td>
+              <td>
+                ${isApproved 
+                  ? `<span class="badge-tag badge-black"><i class="fa-solid fa-check"></i> Sudah Terbit Publik</span>`
+                  : `<button class="btn btn-crimson btn-sm" onclick="approveAndPublishDirect(${a.id})"><i class="fa-solid fa-check-double"></i> Approve & Rilis Publik</button>`
+                }
+              </td>
+            </tr>
+          `;
+        }).join('');
       }
 
       // Render Vault Table
@@ -519,7 +557,7 @@
       article.approvedAt = new Date().toLocaleString('id-ID');
       localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
       renderPemredDashboard();
-      showToast(`🎉 Artikel "${article.title.substring(0, 40)}..." telah disetujui Pemred dan tayang ke publik!`);
+      showToast(`🎉 Berita "${article.title.substring(0, 35)}..." resmi disetujui Pemred dan tayang ke publik!`);
     }
 
     function deleteArticlePemred(id) {
@@ -535,7 +573,52 @@
     }
 
     function openPemredReportModal(ticket) {
-      showToast(`🔓 Berkas Whistleblower ${ticket} berhasil didekripsi oleh Pemred.`);
+      const caseItem = caseTrackerData.find(c => c.ticketCode === ticket) || caseTrackerData[0];
+      if (!caseItem) return;
+
+      const body = document.getElementById('pemredVaultModalBody');
+      if (body) {
+        body.innerHTML = `
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="badge-tag badge-black">TIKET: ${caseItem.ticketCode}</span>
+              <span class="tc-status-badge status-${caseItem.status}">${caseItem.statusLabel}</span>
+            </div>
+            <h3 style="font-size: 1.25rem; font-family: var(--font-heading); color: #0B0E14; margin-bottom: 0.5rem;">${caseItem.title}</h3>
+            <p class="text-sm" style="color: #475569; line-height: 1.6;">${caseItem.summary}</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem;">
+            <div style="background: #FFFFFF; border: 1px solid #CBD5E1; padding: 0.85rem; border-radius: 6px;">
+              <strong style="display: block; color: var(--color-black); margin-bottom: 0.25rem;"><i class="fa-solid fa-tag text-crimson"></i> Kategori Kasus:</strong>
+              <span>${caseItem.category}</span>
+            </div>
+            <div style="background: #FFFFFF; border: 1px solid #CBD5E1; padding: 0.85rem; border-radius: 6px;">
+              <strong style="display: block; color: var(--color-black); margin-bottom: 0.25rem;"><i class="fa-solid fa-users text-crimson"></i> Atensi Publik:</strong>
+              <span>${caseItem.supporters || '1 Dukungan Kawal'}</span>
+            </div>
+          </div>
+
+          <div style="background: #FFF5F5; border-left: 4px solid var(--color-crimson); padding: 1rem; border-radius: 4px; font-size: 0.85rem;">
+            <strong style="color: var(--color-crimson); display: block; margin-bottom: 0.25rem;"><i class="fa-solid fa-user-shield"></i> Status Privasi Whistleblower:</strong>
+            <p style="color: #1E293B; margin: 0;">Identitas pelapor terenkripsi penuh sesuai standar UU Perlindungan Saksi dan Korban (LPSK). Metadata berkas digital telah diamankan.</p>
+          </div>
+        `;
+      }
+
+      const modal = document.getElementById('pemredVaultModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closePemredVaultModal() {
+      const modal = document.getElementById('pemredVaultModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {

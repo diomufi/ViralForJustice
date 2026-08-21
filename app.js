@@ -782,6 +782,22 @@ function showToast(message) {
   }, 4000);
 }
 
+function openMediaSiberModal() {
+  const modal = document.getElementById("mediaSiberModal");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeMediaSiberModal() {
+  const modal = document.getElementById("mediaSiberModal");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+}
+
 // Close modals on clicking overlay outside card
 window.addEventListener("click", (e) => {
   if (e.target.classList.contains("modal-overlay")) {

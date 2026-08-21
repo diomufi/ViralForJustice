@@ -283,15 +283,20 @@
                 <div class="google-header">
                   <i class="fa-brands fa-google text-crimson"></i> <strong>PRATINJAU TAMPILAN PENCARIAN GOOGLE:</strong>
                 </div>
-                <div class="google-url" id="jPreviewUrl">https://viralforjustice.com/article.html?id=102</div>
+                <div class="google-url" id="jPreviewUrl">https://viralforjustice.web.id/article.html?id=102</div>
                 <div class="google-title" id="jPreviewTitle">Judul Berita | VIRAL FOR JUSTICE</div>
                 <div class="google-desc" id="jPreviewDesc">Ringkasan berita akan muncul di sini sebagai cuplikan meta description Google...</div>
               </div>
 
               <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                <button type="button" class="btn btn-secondary" onclick="showToast('💾 Draf liputan berhasil disimpan di memori lokal.')">
-                  <i class="fa-regular fa-floppy-disk"></i> Simpan Draf
-                </button>
+                <div style="display: flex; gap: 0.5rem;">
+                  <button type="button" class="btn btn-secondary" onclick="saveDraftJurnalis()">
+                    <i class="fa-regular fa-floppy-disk"></i> Simpan Draf
+                  </button>
+                  <button type="button" class="btn btn-sm-outline" onclick="clearDraftJurnalis()" style="border-color: #CBD5E1;">
+                    <i class="fa-solid fa-trash-can"></i> Hapus Draf
+                  </button>
+                </div>
                 <button type="submit" class="btn btn-crimson" style="padding: 0.75rem 2rem; font-size: 1rem;">
                   <i class="fa-solid fa-paper-plane"></i> 🚀 Terbitkan Berita ke Portal
                 </button>
@@ -370,7 +375,11 @@
       
       const target = document.getElementById(tabId);
       if (target) target.classList.remove('hidden');
-      event.currentTarget.classList.add('active');
+      
+      const navItem = Array.from(document.querySelectorAll('.dash-nav-item')).find(item => {
+        return item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId);
+      });
+      if (navItem) navItem.classList.add('active');
     }
 
     function updateJurnalisPreview() {
@@ -379,6 +388,49 @@
       
       document.getElementById('jPreviewTitle').textContent = `${title} | VIRAL FOR JUSTICE`;
       document.getElementById('jPreviewDesc').textContent = excerpt;
+    }
+
+    function saveDraftJurnalis() {
+      const draft = {
+        title: document.getElementById('jTitle').value,
+        category: document.getElementById('jCategory').value,
+        author: document.getElementById('jAuthor').value,
+        image: document.getElementById('jImage').value,
+        readTime: document.getElementById('jReadTime').value,
+        excerpt: document.getElementById('jExcerpt').value,
+        quote: document.getElementById('jQuote').value,
+        content: document.getElementById('jContent').value,
+        savedAt: new Date().toLocaleString('id-ID')
+      };
+      localStorage.setItem('v4j_journalist_draft', JSON.stringify(draft));
+      showToast(`💾 Draf berhasil disimpan di memori lokal (${draft.savedAt})`);
+    }
+
+    function restoreDraftJurnalis() {
+      try {
+        const saved = localStorage.getItem('v4j_journalist_draft');
+        if (saved) {
+          const draft = JSON.parse(saved);
+          if (draft.title) document.getElementById('jTitle').value = draft.title;
+          if (draft.category) document.getElementById('jCategory').value = draft.category;
+          if (draft.author) document.getElementById('jAuthor').value = draft.author;
+          if (draft.image) document.getElementById('jImage').value = draft.image;
+          if (draft.readTime) document.getElementById('jReadTime').value = draft.readTime;
+          if (draft.excerpt) document.getElementById('jExcerpt').value = draft.excerpt;
+          if (draft.quote) document.getElementById('jQuote').value = draft.quote;
+          if (draft.content) document.getElementById('jContent').value = draft.content;
+          updateJurnalisPreview();
+        }
+      } catch(e) {}
+    }
+
+    function clearDraftJurnalis() {
+      if (confirm('Hapus draf yang tersimpan di form ini?')) {
+        localStorage.removeItem('v4j_journalist_draft');
+        document.getElementById('jurnalisNewsForm').reset();
+        updateJurnalisPreview();
+        showToast('🗑️ Draf form berhasil dibersihkan.');
+      }
     }
 
     function handleJurnalisSubmit(e) {
@@ -418,7 +470,7 @@
         isVerified: true,
         urgency: 'Liputan Lapangan',
         content: `
-          <p class="lead">${excerpt}</p>
+          <p class="lead"><strong>JAWA TIMUR</strong> — ${excerpt}</p>
           ${quote ? `
             <div class="evidence-quote-box">
               <strong><i class="fa-solid fa-file-invoice"></i> TEMUAN BUKTI REDAKSI:</strong>
@@ -449,8 +501,10 @@
       caseTrackerData.unshift(newTracker);
       localStorage.setItem('v4j_custom_trackers', JSON.stringify(caseTrackerData));
 
+      localStorage.removeItem('v4j_journalist_draft');
       showToast('🎉 Berita liputan berhasil diterbitkan ke portal!');
       document.getElementById('jurnalisNewsForm').reset();
+      updateJurnalisPreview();
       renderJurnalisDesk();
     }
 
@@ -493,6 +547,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       renderJurnalisDesk();
+      restoreDraftJurnalis();
       updateJurnalisPreview();
     });
   </script>

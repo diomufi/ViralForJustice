@@ -299,7 +299,11 @@
       
       const target = document.getElementById(tabId);
       if (target) target.classList.remove('hidden');
-      event.currentTarget.classList.add('active');
+      
+      const navItem = Array.from(document.querySelectorAll('.dash-nav-item')).find(item => {
+        return item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId);
+      });
+      if (navItem) navItem.classList.add('active');
     }
 
     function renderLegalDesk() {
@@ -326,27 +330,54 @@
 
       const cbody = document.getElementById('legalClearanceTable');
       if (cbody) {
-        cbody.innerHTML = articlesData.map(a => `
-          <tr>
-            <td><strong>${a.title}</strong></td>
-            <td>${a.author}</td>
-            <td><span class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid #10B981;"><i class="fa-solid fa-circle-check"></i> Cleared</span></td>
-            <td>
-              <button class="btn btn-sm-outline" onclick="grantClearanceLegal(${a.id})">
-                <i class="fa-solid fa-stamp"></i> Berikan Stempel Legal
-              </button>
-            </td>
-          </tr>
-        `).join('');
+        cbody.innerHTML = articlesData.map(a => {
+          const isCleared = a.legalCleared || true;
+          return `
+            <tr>
+              <td><strong>${a.title}</strong></td>
+              <td>${a.author}</td>
+              <td>
+                <span class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid #10B981;">
+                  <i class="fa-solid fa-circle-check"></i> ${a.legalCleared ? 'Stempel Legal Sah' : 'Siap Ditinjau'}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-sm-outline" onclick="grantClearanceLegal(${a.id})" style="border-color: #10B981; color: #10B981;">
+                  <i class="fa-solid fa-stamp"></i> Berikan Stempel Legal
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
       }
     }
 
     function verifyAndAssign(ticket) {
-      showToast(`⚖️ Bukti tiket ${ticket} diverifikasi Satgas Legal dan diteruskan ke Meja Jurnalis.`);
+      const caseItem = caseTrackerData.find(c => c.ticketCode === ticket);
+      if (caseItem) {
+        caseItem.status = 'viral';
+        caseItem.statusLabel = '🔴 Viralisasi Publik';
+        caseItem.stage = 2;
+        caseItem.updated = 'Baru Diverifikasi Satgas Legal';
+        localStorage.setItem('v4j_custom_trackers', JSON.stringify(caseTrackerData));
+        renderLegalDesk();
+        showToast(`⚖️ Bukti tiket ${ticket} diverifikasi Satgas Legal dan ditingkatkan ke tahap Viralisasi!`);
+      } else {
+        showToast(`⚖️ Bukti tiket ${ticket} diverifikasi Satgas Legal.`);
+      }
     }
 
     function grantClearanceLegal(id) {
-      showToast('✅ Legal Clearance diberikan: Berita siap dirilis oleh Pemimpin Redaksi!');
+      const article = articlesData.find(a => a.id === id);
+      if (article) {
+        article.legalCleared = true;
+        article.legalClearedAt = new Date().toLocaleString('id-ID');
+        localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+        renderLegalDesk();
+        showToast(`✅ Legal Clearance disahkan untuk artikel "${article.title.substring(0, 35)}..."!`);
+      } else {
+        showToast('✅ Legal Clearance diberikan: Berita siap dirilis oleh Pemimpin Redaksi!');
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
