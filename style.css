@@ -2082,6 +2082,17 @@ button, input, select, textarea {
 /* ==========================================================================
    11. RESPONSIVE BREAKPOINTS & CROSS-DEVICE OPTIMIZATION
    ========================================================================== */
+/* Global responsive boundary prevention */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -2130,6 +2141,13 @@ button, input, select, textarea {
 }
 
 @media (max-width: 768px) {
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    box-sizing: border-box !important;
+  }
   .top-bar-content {
     flex-direction: column;
     align-items: flex-start;
@@ -2139,8 +2157,38 @@ button, input, select, textarea {
     width: 100%;
   }
   .header-container {
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    padding: 0.4rem 0 !important;
+    width: 100% !important;
+  }
+  .header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    flex-shrink: 0 !important;
+  }
+  .header-right {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+  .brand-logo .logo-box-3d {
+    padding: 0.2rem 0.45rem !important;
+    box-shadow: 2px 2px 0px #000000 !important;
+  }
+  .word-viral, .word-justice {
+    font-size: 1rem !important;
+  }
+  .word-for {
+    font-size: 0.6rem !important;
+  }
+  .btn-report {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.725rem !important;
+    white-space: nowrap !important;
   }
   .mobile-toggle {
     display: block;
@@ -2162,17 +2210,48 @@ button, input, select, textarea {
     display: none;
   }
   .section-title {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
   }
   .featured-title {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
   .featured-image-wrapper {
-    height: 220px;
+    height: 200px;
   }
   .tracker-grid, .news-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* CTA Box Phone Fix */
+  .report-cta-box {
+    grid-template-columns: 1fr !important;
+    padding: 1.5rem 1rem !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .report-cta-text h2 {
+    font-size: 1.5rem !important;
+  }
+  .report-cta-action {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .card-report-preview {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.25rem 1rem !important;
+  }
+  .crp-btn-action, .crp-btn-status {
+    font-size: 0.85rem !important;
+    padding: 0.65rem 0.75rem !important;
+    text-align: center;
+  }
+
   .privacy-selector-card {
     grid-template-columns: 1fr;
   }
@@ -2215,16 +2294,19 @@ button, input, select, textarea {
 
 @media (max-width: 480px) {
   .logo-box-3d {
-    padding: 0.25rem 0.5rem;
+    padding: 0.2rem 0.4rem;
   }
   .word-viral, .word-justice {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
   }
   .word-for {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
   }
   .btn-report {
-    padding: 0.4rem 0.75rem;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.7rem;
+  }
+  .btn-report i {
     font-size: 0.75rem;
   }
   .dash-table th, .dash-table td {
