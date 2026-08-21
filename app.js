@@ -445,23 +445,15 @@ function closeArticleModal() {
 }
 
 // ==========================================
-// 6. WHISTLEBLOWER REPORT FORM
+// 6. WHISTLEBLOWER REPORT NAVIGATION
 // ==========================================
 
 function openReportModal() {
-  const modal = document.getElementById("reportModal");
-  if (modal) {
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
+  window.location.href = "lapor.html";
 }
 
 function closeReportModal() {
-  const modal = document.getElementById("reportModal");
-  if (modal) {
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
-  }
+  // Handled on dedicated page
 }
 
 function initDropzone() {

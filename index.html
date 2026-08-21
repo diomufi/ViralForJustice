@@ -116,10 +116,10 @@
           <input type="text" id="searchInput" placeholder="Cari kasus, tokoh, topik..." autocomplete="off">
           <button id="searchBtn" aria-label="Cari Berita" style="display: none;"></button>
         </div>
-        <button class="btn btn-report" id="openReportModalBtn" onclick="openReportModal()">
+        <a href="lapor.html" class="btn btn-report" id="openReportModalBtn">
           <span class="pulse-dot"></span>
           <i class="fa-solid fa-bullhorn"></i> <span>Kirim Laporan</span>
-        </button>
+        </a>
       </div>
     </div>
   </header>
@@ -180,9 +180,9 @@
                   <span>Baca Manifesto Lengkap</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <button class="btn btn-secondary" onclick="openReportModal()">
+                <a href="lapor.html" class="btn btn-secondary">
                   <i class="fa-solid fa-bullhorn"></i> Kirim Laporan Kasus
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -197,7 +197,7 @@
               <p class="sidebar-sub">Komitmen independen dalam membela hak publik.</p>
               
               <div class="urgent-list">
-                <div class="urgent-item" onclick="openReportModal()">
+                <div class="urgent-item" onclick="window.location.href='lapor.html'">
                   <span class="urgent-number">01</span>
                   <div class="urgent-info">
                     <span class="urgent-tag">PORTAL WHISTLEBLOWER</span>
@@ -235,9 +235,9 @@
                   <p>Lapor anonim & aman. Identitasmu dienkripsi redaksi.</p>
                 </div>
               </div>
-              <button class="btn btn-white-banner" onclick="openReportModal()">
+              <a href="lapor.html" class="btn btn-white-banner">
                 <i class="fa-solid fa-paper-plane"></i> Buat Pengaduan Sekarang
-              </button>
+              </a>
             </div>
 
           </aside>
@@ -323,12 +323,12 @@
                   <p class="text-xs text-muted">Aman • Terenkripsi • Terpantau</p>
                 </div>
               </div>
-              <button class="btn btn-crimson btn-block" onclick="openReportModal()" style="width: 100%; box-sizing: border-box; text-align: center;">
+              <a href="lapor.html" class="btn btn-crimson btn-block" style="width: 100%; box-sizing: border-box; text-align: center;">
                 <i class="fa-solid fa-paper-plane"></i> Mulai Buat Laporan Pengaduan
-              </button>
-              <button class="btn btn-outline-white btn-block" onclick="openTrackerSearchModal()" style="width: 100%; box-sizing: border-box; text-align: center;">
+              </a>
+              <a href="lapor.html#sideTicketInput" class="btn btn-outline-white btn-block" style="width: 100%; box-sizing: border-box; text-align: center;">
                 <i class="fa-solid fa-receipt"></i> Cek Status Laporan Saya (Kode Tiket)
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -397,7 +397,7 @@
       <div class="footer-col">
         <h4>Ruang Publik</h4>
         <ul>
-          <li><a href="javascript:void(0)" onclick="openReportModal()">Kirim Laporan Kasus</a></li>
+          <li><a href="lapor.html">Kirim Laporan Kasus</a></li>
           <li><a href="#caseTrackerSection">Public Case Tracker</a></li>
           <li><a href="#cekFaktaSection">Kanal Cek Fakta</a></li>
           <li><a href="javascript:void(0)" onclick="openMediaSiberModal()">Pedoman Media Siber</a></li>

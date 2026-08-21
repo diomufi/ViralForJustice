@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Pengaduan Whistleblower Aman & Anonim - VIRAL FOR JUSTICE. Laporkan ketidakadilan, korupsi, dan pelanggaran hukum dengan enkripsi ketat.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://viralforjustice.web.id/lapor.html">
+
+  <title>Kirim Pengaduan Kasus (Whistleblower Portal) | VIRAL FOR JUSTICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lapor-page-layout {
+      padding: 2rem 0 4rem;
+      background: var(--color-light-bg);
+      min-height: 80vh;
+    }
+    .lapor-container-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+    .lapor-form-card {
+      background: #FFFFFF;
+      border: 2px solid var(--color-black);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-3d);
+      padding: 2.25rem;
+    }
+    .lapor-header-banner {
+      background: var(--color-crimson);
+      color: #FFFFFF;
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 2rem;
+      border: 2px solid #000000;
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .lapor-header-banner h1 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .lapor-header-banner p {
+      font-size: 0.875rem;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+    
+    .privacy-selector-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .privacy-opt-card {
+      border: 2px solid var(--color-light-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      transition: var(--transition);
+      background: #FFFFFF;
+    }
+    .privacy-opt-card:hover, .privacy-opt-card.active {
+      border-color: var(--color-crimson);
+      background: #FFF5F5;
+      box-shadow: 2px 2px 0px #000000;
+    }
+    .privacy-opt-card input[type="radio"] {
+      margin-top: 0.25rem;
+      accent-color: var(--color-crimson);
+    }
+    .privacy-opt-card strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--color-black);
+      margin-bottom: 0.2rem;
+    }
+    .privacy-opt-card p {
+      font-size: 0.775rem;
+      color: var(--color-gray-500);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--color-black);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--color-light-border);
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      background: #FFFFFF;
+      transition: var(--transition);
+      box-sizing: border-box;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-crimson);
+      box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15);
+    }
+    .form-row-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .file-dropzone-box {
+      border: 2px dashed #CBD5E1;
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      background: var(--color-gray-100);
+      transition: var(--transition);
+    }
+    .file-dropzone-box:hover {
+      border-color: var(--color-crimson);
+      background: #FFF5F5;
+    }
+    .file-dropzone-box p {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .file-dropzone-box span {
+      font-size: 0.75rem;
+      color: var(--color-gray-500);
+    }
+
+    .form-agreement-box {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin: 1.5rem 0;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #334155;
+    }
+    .form-agreement-box input[type="checkbox"] {
+      margin-top: 0.25rem;
+      accent-color: var(--color-crimson);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Ticket Success View */
+    .success-card-view {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .success-icon-badge {
+      width: 72px;
+      height: 72px;
+      background: #DCFCE7;
+      color: #15803D;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.25rem;
+      margin: 0 auto 1.25rem;
+      border: 3px solid #15803D;
+    }
+    .ticket-display-box {
+      background: #0B0E14;
+      color: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      margin: 1.5rem auto;
+      max-width: 480px;
+      border: 2px solid var(--color-crimson);
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .ticket-display-box .code-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #F87171;
+      letter-spacing: 0.08em;
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* Sidebar Boxes */
+    .lapor-sidebar-card {
+      background: #FFFFFF;
+      border: 2px solid var(--color-black);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-3d);
+    }
+    .lapor-sidebar-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--color-black);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .lapor-container-grid {
+        grid-template-columns: 1fr;
+      }
+      .lapor-form-card {
+        padding: 1.25rem;
+      }
+      .form-row-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .privacy-selector-group {
+        grid-template-columns: 1fr;
+      }
+      .lapor-header-banner h1 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement / Breaking Ticker -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-lock"></i> WHISTLEBLOWER
+      </div>
+      <div class="ticker-wrapper">
+        <span class="ticker-item"><i class="fa-solid fa-shield-halved text-crimson"></i> Portal Pengaduan Terenkripsi: Kerahasiaan Saksi & Pelapor Dilindungi UU PDP & LPSK.</span>
+      </div>
+      <div class="top-bar-actions" style="display: flex; align-items: center; gap: 1rem;">
+        <span class="date-time" id="liveDateTime"><i class="fa-regular fa-clock"></i> Memuat...</span>
+        <a href="login.html" style="color: var(--color-crimson-light); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+          <i class="fa-solid fa-lock"></i> Login Redaksi
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="header-left">
+        <a href="index.html" class="brand-logo" title="Kembali ke Beranda">
+          <div class="logo-box-3d">
+            <div class="logo-text">
+              <span class="word-viral">VIRAL</span>
+              <span class="word-for">FOR</span>
+              <span class="word-justice">JUSTICE</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Beranda</a></li>
+          <li><a href="index.html#caseTrackerSection" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Case Tracker</a></li>
+          <li><a href="index.html#investigasiSection" class="nav-link"><i class="fa-solid fa-newspaper"></i> Berita Investigasi</a></li>
+          <li><a href="index.html#cekFaktaSection" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Cek Fakta</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="index.html" class="btn btn-secondary" style="font-size: 0.8rem;">
+          <i class="fa-solid fa-arrow-left"></i> <span>Kembali ke Beranda</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dedicated Report Page Content -->
+  <main class="lapor-page-layout">
+    <div class="container">
+      <div class="lapor-container-grid">
+        
+        <!-- Left: Form Card -->
+        <section class="lapor-form-card" id="formSectionContainer">
+          
+          <!-- Header Banner -->
+          <div class="lapor-header-banner">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.35rem;">
+              <i class="fa-solid fa-bullhorn text-2xl"></i>
+              <h1>Formulir Pengaduan Whistleblower</h1>
+            </div>
+            <p>Laporkan dugaan tindak pidana, pungli, korupsi, atau ketidakadilan hukum. Laporan Anda akan dienkripsi dan dianalisis secara rahasia oleh dewan redaksi & satgas legal independen.</p>
+          </div>
+
+          <!-- Normal Form State -->
+          <form id="standaloneLaporForm" onsubmit="handleLaporSubmit(event)">
+            
+            <!-- Privacy Mode Selection -->
+            <div style="margin-bottom: 1.25rem;">
+              <label style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Pilih Mode Kerahasiaan Identitas Pelapor:</label>
+              <div class="privacy-selector-group">
+                <label class="privacy-opt-card active" id="optAnonCard" onclick="selectPrivacyMode('anonymous')">
+                  <input type="radio" name="reporterType" value="anonymous" checked>
+                  <div>
+                    <strong><i class="fa-solid fa-user-secret text-crimson"></i> 100% Anonim (Direkomendasikan)</strong>
+                    <p>Nama dan kontak tidak akan disimpan di server publik. Identitas Anda dirahasiakan penuh.</p>
+                  </div>
+                </label>
+
+                <label class="privacy-opt-card" id="optVerifiedCard" onclick="selectPrivacyMode('verified')">
+                  <input type="radio" name="reporterType" value="verified">
+                  <div>
+                    <strong><i class="fa-solid fa-id-card-clip text-black"></i> Cantumkan Kontak Komunikasi</strong>
+                    <p>Nama/kontak aman disimpan hanya untuk koordinasi bantuan hukum tim advokasi LBH.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Optional Verified Identity Fields -->
+            <div id="verifiedFieldsBlock" class="form-row-grid hidden">
+              <div class="form-group">
+                <label for="repName">Nama Lengkap / Samaran</label>
+                <input type="text" id="repName" class="form-control" placeholder="Contoh: Saksi Kunci X">
+              </div>
+              <div class="form-group">
+                <label for="repContact">Nomor WhatsApp / Telegram / Email</label>
+                <input type="text" id="repContact" class="form-control" placeholder="0812xxxx atau @username">
+              </div>
+            </div>
+
+            <!-- Case Title & Category -->
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="caseTitleInput">Judul Inti Dugaan Kasus <span class="text-crimson">*</span></label>
+                <input type="text" id="caseTitleInput" class="form-control" placeholder="Contoh: Dugaan Pemotongan Anggaran Bansos 40% di Jawa Timur" required>
+              </div>
+              <div class="form-group">
+                <label for="caseCategorySelect">Kategori Kasus <span class="text-crimson">*</span></label>
+                <select id="caseCategorySelect" class="form-control" required>
+                  <option value="">Pilih Kategori...</option>
+                  <option value="korupsi">Korupsi / Pungli / Anggaran Daerah</option>
+                  <option value="hukum">Kriminalisasi & Penyalahgunaan Aparat</option>
+                  <option value="ham">Pelanggaran Hak Asasi Manusia (HAM)</option>
+                  <option value="tanah">Sengketa Tanah & Konflik Agraria</option>
+                  <option value="ketenagakerjaan">Hak Buruh / Ketenagakerjaan</option>
+                  <option value="digital">Kejahatan Siber & Penipuan Digital</option>
+                  <option value="lingkungan">Kerusakan Lingkungan & Tambang Ilegal</option>
+                  <option value="lainnya">Aduan Publik Lainnya</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Location & Urgency -->
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="caseLocationInput">Lokasi Kejadian (Kota/Kabupaten, Provinsi) <span class="text-crimson">*</span></label>
+                <input type="text" id="caseLocationInput" class="form-control" placeholder="Contoh: Surabaya, Jawa Timur" required>
+              </div>
+              <div class="form-group">
+                <label for="caseUrgencySelect">Tingkat Urgensi Pengawalan <span class="text-crimson">*</span></label>
+                <select id="caseUrgencySelect" class="form-control" required>
+                  <option value="tinggi">🚨 Sangat Mendesak (Ada ancaman fisik / korban ditahan)</option>
+                  <option value="sedang" selected>⚠️ Sedang (Kasus mandek / butuh atensi publik)</option>
+                  <option value="rendah">ℹ️ Investigasi Lanjutan (Informasi awal & dokumen bukti)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Chronology -->
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label for="caseChronologyText">Kronologi Lengkap & Pihak yang Terlibat <span class="text-crimson">*</span></label>
+              <textarea id="caseChronologyText" rows="6" class="form-control" placeholder="Jelaskan secara runtut tanggal kejadian, instansi/oknum terkait, kerugian korban, dan pasal atau hak yang dilanggar..." required></textarea>
+            </div>
+
+            <!-- Evidence Attachment -->
+            <div class="form-group" style="margin-bottom: 1.5rem;">
+              <label>Lampirkan Dokumen Bukti / Foto / Video / Rekaman (Maks 25MB)</label>
+              <div class="file-dropzone-box" id="standaloneDropzone" onclick="document.getElementById('standaloneFileInput').click()">
+                <i class="fa-solid fa-cloud-arrow-up text-crimson" style="font-size: 2.5rem;"></i>
+                <p>Klik di sini atau tarik file berkas bukti ke area ini</p>
+                <span>Mendukung PDF, JPG, PNG, MP4, MP3, DOCX (Metadata EXIF sensitif disamarkan otomatis)</span>
+                <input type="file" id="standaloneFileInput" multiple style="display: none;" onchange="handleStandaloneFiles(event)">
+              </div>
+              <div id="standaloneFileList" class="file-list-preview" style="margin-top: 0.75rem;"></div>
+            </div>
+
+            <!-- Agreement Checkbox -->
+            <div class="form-agreement-box">
+              <input type="checkbox" id="agreementCheck" required>
+              <label for="agreementCheck">
+                Saya menyatakan bahwa informasi dan bukti yang disampaikan adalah benar dan dapat dipertanggungjawabkan demi kepentingan advokasi keadilan publik.
+              </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="display: flex; gap: 1rem; align-items: center; justify-content: flex-end; flex-wrap: wrap;">
+              <a href="index.html" class="btn btn-secondary">Batal</a>
+              <button type="submit" class="btn btn-crimson" id="btnSubmitReport" style="padding: 0.85rem 2rem; font-size: 1rem;">
+                <i class="fa-solid fa-shield-halved"></i> Kirim Laporan & Dapatkan Kode Tiket
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Success State View (Hidden by default) -->
+          <div id="successStateCard" class="success-card-view hidden">
+            <div class="success-icon-badge">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h2 style="font-family: var(--font-heading); font-size: 1.85rem; color: #0B0E14; margin-bottom: 0.5rem;">
+              Laporan Berhasil Diterima & Terenkripsi!
+            </h2>
+            <p class="text-muted" style="max-width: 540px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+              Terima kasih atas keberanian Anda menyuarakan kebenaran. Laporan telah masuk ke antrean verifikasi tim jurnalis investigasi dan satgas advokasi hukum.
+            </p>
+
+            <div class="ticket-display-box">
+              <span class="text-xs text-muted font-bold">KODE TIKET RAHASIA PEMANTAUAN KASUS:</span>
+              <div class="code-text" id="finalTicketCode">V4J-2026-89421</div>
+              <button class="btn btn-sm-outline" style="background: #FFFFFF; color: #000000; border-color: #FFFFFF;" onclick="copyFinalTicket()">
+                <i class="fa-regular fa-copy"></i> Salin Kode Tiket
+              </button>
+            </div>
+
+            <p class="text-xs text-muted" style="max-width: 480px; margin: 0 auto 2rem;">
+              <i class="fa-solid fa-circle-info text-crimson"></i> Simpan kode tiket ini untuk memantau perjalanan kasus Anda di Public Case Tracker secara transparan.
+            </p>
+
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <a href="index.html#caseTrackerSection" class="btn btn-crimson">
+                <i class="fa-solid fa-gauge-high"></i> Lihat di Case Tracker
+              </a>
+              <button class="btn btn-secondary" onclick="resetFormForNewReport()">
+                <i class="fa-solid fa-plus"></i> Buat Laporan Kasus Lain
+              </button>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Right: Sidebar Information & Status Lookup -->
+        <aside>
+          
+          <!-- Box 1: Cek Status Pengaduan Berdasarkan Tiket -->
+          <div class="lapor-sidebar-card">
+            <h3><i class="fa-solid fa-receipt text-crimson"></i> Cek Status Pengaduan</h3>
+            <p class="text-xs text-muted mb-3">Punya kode tiket sebelumnya? Masukkan di sini untuk memeriksa progres penanganan:</p>
+            
+            <div style="display: flex; gap: 0.4rem; margin-bottom: 0.75rem;">
+              <input type="text" id="sideTicketInput" class="form-control" placeholder="V4J-2026-XXXXX" style="font-size: 0.85rem; padding: 0.5rem 0.75rem;">
+              <button class="btn btn-crimson" onclick="lookupSideTicket()" style="padding: 0.5rem 0.75rem; flex-shrink: 0;">
+                <i class="fa-solid fa-search"></i>
+              </button>
+            </div>
+
+            <div id="sideTicketResult" class="hidden" style="background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 6px; padding: 0.85rem; font-size: 0.825rem;">
+              <!-- Dynamic Result -->
+            </div>
+          </div>
+
+          <!-- Box 2: Jaminan Perlindungan Whistleblower -->
+          <div class="lapor-sidebar-card">
+            <h3><i class="fa-solid fa-user-shield text-crimson"></i> 3 Jaminan Perlindungan</h3>
+            <div style="font-size: 0.85rem; color: #334155; line-height: 1.6;">
+              <div style="margin-bottom: 0.85rem;">
+                <strong style="display: block; color: var(--color-black);"><i class="fa-solid fa-shield-halved text-crimson"></i> 1. Kerahasiaan Identitas</strong>
+                <span>Hak tolak wartawan dan perlindungan saksi UU LPSK melindungi data diri Anda.</span>
+              </div>
+              <div style="margin-bottom: 0.85rem;">
+                <strong style="display: block; color: var(--color-black);"><i class="fa-solid fa-file-shield text-crimson"></i> 2. Uji Forensik Metadata</strong>
+                <span>File bukti dibersihkan dari jejak lokasi (GPS EXIF) sebelum disimpan.</span>
+              </div>
+              <div>
+                <strong style="display: block; color: var(--color-black);"><i class="fa-solid fa-scale-balanced text-crimson"></i> 3. Pendampingan Hukum</strong>
+                <span>Laporan valid dikawal bersama jaringan advokat publik dan LBH.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Box 3: Kontak Redaksi Darurat -->
+          <div class="lapor-sidebar-card" style="background: #0B0E14; color: #FFFFFF; border-color: #000000;">
+            <h3 style="color: #FFFFFF;"><i class="fa-solid fa-headset text-crimson"></i> Kontak Redaksi</h3>
+            <p class="text-xs" style="color: #94A3B8; line-height: 1.5; margin-bottom: 0.75rem;">
+              Untuk penyerahan dokumen fisik berkas perkara atau situasi darurat:
+            </p>
+            <div style="font-size: 0.8rem; color: #CBD5E1; line-height: 1.6;">
+              <i class="fa-solid fa-envelope text-crimson"></i> redaksi@viralforjustice.web.id<br>
+              <i class="fa-solid fa-location-dot text-crimson"></i> Surabaya, Jawa Timur
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo-box-3d small-logo">
+          <div class="logo-text">
+            <span class="word-viral">VIRAL</span>
+            <span class="word-for">FOR</span>
+            <span class="word-justice">JUSTICE</span>
+          </div>
+        </div>
+        <p class="footer-tagline">
+          Portal Berita Advokasi & Gerakan Kawal Keadilan Sosial Berbasis Jurnalisme Independen dan Partisipasi Publik.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda Portal</a></li>
+          <li><a href="index.html#caseTrackerSection">Public Case Tracker</a></li>
+          <li><a href="index.html#investigasiSection">Berita Investigasi</a></li>
+          <li><a href="index.html#cekFaktaSection">Standar Cek Fakta</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hubungi Redaksi</h4>
+        <p class="footer-contact-info">
+          <i class="fa-solid fa-envelope"></i> redaksi@viralforjustice.web.id<br>
+          <i class="fa-solid fa-location-dot"></i> Surabaya, Jawa Timur
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 <strong>VIRAL FOR JUSTICE</strong>. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    let standaloneUploadedFiles = [];
+
+    function selectPrivacyMode(mode) {
+      const optAnon = document.getElementById('optAnonCard');
+      const optVer = document.getElementById('optVerifiedCard');
+      const fields = document.getElementById('verifiedFieldsBlock');
+
+      if (mode === 'verified') {
+        optAnon.classList.remove('active');
+        optVer.classList.add('active');
+        optVer.querySelector('input').checked = true;
+        fields.classList.remove('hidden');
+      } else {
+        optVer.classList.remove('active');
+        optAnon.classList.add('active');
+        optAnon.querySelector('input').checked = true;
+        fields.classList.add('hidden');
+      }
+    }
+
+    function handleStandaloneFiles(e) {
+      const files = e.target.files;
+      for (let f of files) {
+        standaloneUploadedFiles.push(f);
+      }
+      renderStandaloneFilesList();
+    }
+
+    function renderStandaloneFilesList() {
+      const list = document.getElementById('standaloneFileList');
+      if (!list) return;
+      list.innerHTML = standaloneUploadedFiles.map((f, idx) => `
+        <div class="file-item">
+          <span><i class="fa-solid fa-file-shield text-crimson"></i> ${f.name} (${(f.size/1024).toFixed(1)} KB)</span>
+          <button type="button" class="btn-remove-file" onclick="removeStandaloneFile(${idx})"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      `).join('');
+    }
+
+    function removeStandaloneFile(idx) {
+      standaloneUploadedFiles.splice(idx, 1);
+      renderStandaloneFilesList();
+    }
+
+    function handleLaporSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('caseTitleInput').value.trim();
+      const category = document.getElementById('caseCategorySelect').value;
+      const location = document.getElementById('caseLocationInput').value.trim();
+      const urgency = document.getElementById('caseUrgencySelect').value;
+      const chronology = document.getElementById('caseChronologyText').value.trim();
+
+      if (!title || !category || !chronology) {
+        showToast('⚠️ Mohon lengkapi judul, kategori, dan kronologi kasus.');
+        return;
+      }
+
+      // Generate Unique Ticket Code
+      const randNum = Math.floor(10000 + Math.random() * 90000);
+      const ticketCode = `V4J-2026-${randNum}`;
+
+      const categoryLabels = {
+        'korupsi': 'Korupsi & Anggaran',
+        'hukum': 'Kriminalisasi & Aparat',
+        'ham': 'Pelanggaran HAM',
+        'tanah': 'Sengketa Agraria',
+        'ketenagakerjaan': 'Hak Tenaga Kerja',
+        'digital': 'Kejahatan Siber',
+        'lingkungan': 'Kerusakan Lingkungan',
+        'lainnya': 'Aduan Masyarakat'
+      };
+
+      loadStoredData();
+
+      // Push into Case Tracker
+      const newCase = {
+        id: `TRK-00${caseTrackerData.length + 1}`,
+        ticketCode: ticketCode,
+        title: title,
+        category: categoryLabels[category] || 'Aduan Masyarakat',
+        status: 'investigasi',
+        statusLabel: '🟡 Investigasi',
+        stage: 1,
+        publicAttention: 'Laporan Baru',
+        supportersCount: 1,
+        supporters: '1 Dukungan Kawal',
+        updated: 'Baru Saja',
+        summary: chronology.substring(0, 140) + (chronology.length > 140 ? '...' : '')
+      };
+
+      caseTrackerData.unshift(newCase);
+      localStorage.setItem('v4j_custom_trackers', JSON.stringify(caseTrackerData));
+
+      // Display Success Card
+      document.getElementById('standaloneLaporForm').classList.add('hidden');
+      document.getElementById('finalTicketCode').textContent = ticketCode;
+      document.getElementById('successStateCard').classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast(`🎉 Laporan berhasil dikirim! Kode tiket: ${ticketCode}`);
+    }
+
+    function copyFinalTicket() {
+      const code = document.getElementById('finalTicketCode').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        showToast('📋 Kode tiket berhasil disalin ke clipboard!');
+      }).catch(() => {
+        showToast(`Kode tiket: ${code}`);
+      });
+    }
+
+    function resetFormForNewReport() {
+      document.getElementById('standaloneLaporForm').reset();
+      standaloneUploadedFiles = [];
+      renderStandaloneFilesList();
+      document.getElementById('successStateCard').classList.add('hidden');
+      document.getElementById('standaloneLaporForm').classList.remove('hidden');
+      selectPrivacyMode('anonymous');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function lookupSideTicket() {
+      const query = document.getElementById('sideTicketInput').value.trim().toUpperCase();
+      const resBox = document.getElementById('sideTicketResult');
+      if (!query) {
+        showToast('⚠️ Masukkan kode tiket pengaduan.');
+        return;
+      }
+
+      loadStoredData();
+      const match = caseTrackerData.find(c => c.ticketCode.toUpperCase() === query);
+
+      resBox.classList.remove('hidden');
+      if (match) {
+        resBox.innerHTML = `
+          <div style="border-left: 3px solid var(--color-crimson); padding-left: 0.5rem;">
+            <strong style="color: var(--color-black); display: block;">${match.ticketCode}</strong>
+            <span class="tc-status-badge status-${match.status}" style="display: inline-block; margin: 0.25rem 0;">${match.statusLabel}</span>
+            <p style="margin: 0.25rem 0; font-weight: 600; color: #0F172A;">${match.title}</p>
+            <span class="text-xs text-muted"><i class="fa-solid fa-clock-rotate-left"></i> ${match.updated}</span>
+          </div>
+        `;
+      } else {
+        resBox.innerHTML = `
+          <div style="color: #EF4444; font-size: 0.8rem;">
+            <i class="fa-solid fa-triangle-exclamation"></i> Kode tiket tidak ditemukan dalam database antrean aktif.
+          </div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initClock();
+    });
+  </script>
+</body>
+</html>
