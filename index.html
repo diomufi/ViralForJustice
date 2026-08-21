@@ -102,7 +102,7 @@
       <nav class="nav-menu" id="navMenu">
         <ul class="nav-list">
           <li><a href="#heroSection" class="nav-link active"><i class="fa-solid fa-house"></i> Beranda</a></li>
-          <li><a href="#caseTrackerSection" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Kawal Kasus <span class="badge-count">12</span></a></li>
+          <li><a href="#caseTrackerSection" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Kawal Kasus <span class="badge-count" id="headerCaseCount">1</span></a></li>
           <li><a href="#investigasiSection" class="nav-link"><i class="fa-solid fa-magnifying-glass-chart"></i> Investigasi</a></li>
           <li><a href="#suaraWargaSection" class="nav-link"><i class="fa-solid fa-bullhorn"></i> Suara Publik</a></li>
           <li><a href="#cekFaktaSection" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Cek Fakta</a></li>
@@ -127,7 +127,7 @@
   <!-- Category Quick Bar -->
   <div class="category-strip">
     <div class="container category-container">
-      <div class="tags-label"><i class="fa-solid fa-fire text-crimson"></i> TRENDING:</div>
+      <div class="tags-label"><i class="fa-solid fa-fire text-crimson"></i> TOPIK:</div>
       <div class="category-chips" id="categoryChips">
         <button class="chip active" data-cat="all">Semua Kasus</button>
         <button class="chip" data-cat="hukum"><i class="fa-solid fa-scale-balanced"></i> Hukum & Kriminal</button>
@@ -140,62 +140,59 @@
     </div>
   </div>
 
-  <!-- Main Content Body -->
-  <main class="main-wrapper">
+  <!-- Main Content Layout -->
+  <main class="main-layout">
     
-    <!-- Hero Section: Featured Investigative Piece -->
-    <section class="hero-section" id="heroSection">
+    <!-- Hero / Top Headline Section -->
+    <section class="section-hero" id="heroSection">
       <div class="container">
         <div class="hero-grid">
           
-          <!-- Big Featured Story: Introductory Article -->
-          <article class="featured-card" id="featuredArticle">
+          <!-- Featured Lead Story -->
+          <div class="featured-card">
             <div class="featured-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" alt="Mengenal Viral For Justice" class="featured-img">
-              <div class="image-overlay"></div>
-              <div class="featured-badges">
-                <span class="badge-tag badge-red"><i class="fa-solid fa-bullhorn"></i> PENGENALAN RESMI</span>
-                <span class="badge-tag badge-black"><i class="fa-solid fa-scale-balanced"></i> MANIFESTO PLATFORM</span>
-              </div>
-              <div class="viral-meter-pill">
-                <span class="viral-icon">🔥</span>
-                <div class="viral-info">
-                  <span class="viral-score">VIRAL INDEX: 99.8%</span>
-                  <span class="viral-sub">Peluncuran Resmi • Advokasi Publik</span>
-                </div>
-              </div>
+              <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" 
+                   alt="VIRAL FOR JUSTICE Manifesto" 
+                   class="featured-image"
+                   id="featuredImg">
+              <div class="featured-overlay"></div>
+              <span class="badge-featured"><i class="fa-solid fa-star"></i> DOKUMEN RESMI</span>
+              <span class="badge-verification"><i class="fa-solid fa-circle-check"></i> Terverifikasi Redaksi</span>
             </div>
+
             <div class="featured-content">
-              <div class="meta-row">
+              <div class="featured-meta">
                 <span class="meta-item"><i class="fa-regular fa-clock"></i> Baru Saja</span>
-                <span class="meta-item"><i class="fa-solid fa-user-pen"></i> Dewan Redaksi V4J</span>
-                <span class="meta-item text-crimson"><i class="fa-solid fa-circle-check"></i> Pernyataan Resmi</span>
+                <span class="meta-item"><i class="fa-solid fa-scale-balanced"></i> PENGENALAN & MANIFESTO</span>
+                <span class="meta-item"><i class="fa-solid fa-book-reader"></i> 4 Menit Baca</span>
               </div>
-              <h1 class="featured-title">
-                <a href="article.html?id=1" style="color: inherit; text-decoration: none;">
-                  Mengenal VIRAL FOR JUSTICE: Platform Jurnalisme Advokasi, Whistleblower, dan Pengawalan Keadilan Publik
-                </a>
+              
+              <h1 class="featured-title" id="featuredTitle">
+                <a href="article.html?id=1">Mengenal VIRAL FOR JUSTICE: Platform Jurnalisme Advokasi, Whistleblower, dan Pengawalan Keadilan Publik</a>
               </h1>
-              <p class="featured-excerpt">
-                Viral For Justice hadir sebagai wadah independen untuk menjembatani suara korban ketidakadilan, membongkar kebenaran melalui investigasi berbasis data bukti, dan mengawal proses hukum bersama jutaan warganet secara transparan.
+              
+              <p class="featured-excerpt" id="featuredExcerpt">
+                Viral For Justice hadir sebagai wadah independen untuk menjembatani suara korban ketidakadilan, membongkar kebenaran melalui investigasi berbasis bukti, dan mengawal proses hukum bersama jutaan warganet secara transparan.
               </p>
-              <div class="featured-footer">
+
+              <div class="featured-actions">
                 <a href="article.html?id=1" class="btn btn-crimson">
-                  <i class="fa-solid fa-book-open"></i> Baca Halaman Berita Lengkap
+                  <span>Baca Manifesto Lengkap</span>
+                  <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <button class="btn btn-outline-dark" onclick="shareArticle('Mengenal VIRAL FOR JUSTICE - Platform Jurnalisme Advokasi Publik')">
-                  <i class="fa-solid fa-share-nodes"></i> Bagikan Berita
+                <button class="btn btn-secondary" onclick="openReportModal()">
+                  <i class="fa-solid fa-bullhorn"></i> Kirim Laporan Kasus
                 </button>
               </div>
             </div>
-          </article>
+          </div>
 
-          <!-- Sidebar: Urgent Cases & Action Meter -->
+          <!-- Sidebar Urgent Cases -->
           <aside class="hero-sidebar">
             <div class="card sidebar-box urgent-box">
               <div class="sidebar-header">
-                <h3><i class="fa-solid fa-shield-halved text-crimson"></i> 3 PILAR UTAMA KAMI</h3>
-                <span class="live-dot">AKTIF</span>
+                <h3><i class="fa-solid fa-bolt text-crimson"></i> 3 PILAR UTAMA V4J</h3>
+                <span class="pulse-tag">Independen</span>
               </div>
               <p class="sidebar-sub">Komitmen independen dalam membela hak publik.</p>
               
@@ -259,11 +256,11 @@
             <p class="section-desc">Transparansi progres penanganan kasus dari laporan publik hingga kepastian hukum yang adil.</p>
           </div>
           <div class="tracker-filter-tabs">
-            <button class="tracker-tab active" data-status="all">Semua Status (12)</button>
-            <button class="tracker-tab" data-status="investigasi">🟡 Investigasi (4)</button>
-            <button class="tracker-tab" data-status="viral">🔴 Viralisasi (5)</button>
-            <button class="tracker-tab" data-status="hukum">🔵 Proses Hukum (2)</button>
-            <button class="tracker-tab" data-status="tuntas">🟢 Keadilan Tercapai (1)</button>
+            <button class="tracker-tab active" data-status="all">Semua Status (1)</button>
+            <button class="tracker-tab" data-status="investigasi">🟡 Investigasi (1)</button>
+            <button class="tracker-tab" data-status="viral">🔴 Viralisasi (0)</button>
+            <button class="tracker-tab" data-status="hukum">🔵 Proses Hukum (0)</button>
+            <button class="tracker-tab" data-status="tuntas">🟢 Keadilan Tercapai (0)</button>
           </div>
         </div>
 
@@ -283,7 +280,7 @@
             <h2 class="section-title">Berita Investigasi & Suara Kebenaran</h2>
           </div>
           <div class="view-toggle">
-            <span id="resultsCount" class="results-text">Menampilkan 6 artikel</span>
+            <span id="resultsCount" class="results-text">Menampilkan 1 artikel</span>
           </div>
         </div>
 

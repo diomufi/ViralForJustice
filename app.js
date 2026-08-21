@@ -288,6 +288,13 @@ function initSearch() {
     input.addEventListener("input", (e) => {
       renderNewsGrid(activeCategory, e.target.value.trim());
     });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        renderNewsGrid(activeCategory, input.value.trim());
+        const target = document.getElementById("investigasiSection");
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   }
 
   if (btn && input) {
@@ -720,12 +727,21 @@ function loadMoreArticles() {
 
 function subscribeNewsletter() {
   const input = document.getElementById("newsletterEmail");
-  if (!input || !input.value.includes("@")) {
+  if (!input || !input.value.includes("@") || !input.value.includes(".")) {
     showToast("⚠️ Mohon masukkan alamat email yang valid.");
     return;
   }
+  const email = input.value.trim().toLowerCase();
+  let subs = [];
+  try {
+    subs = JSON.parse(localStorage.getItem('v4j_subscribers') || '[]');
+  } catch(e) {}
+  if (!subs.includes(email)) {
+    subs.push(email);
+    localStorage.setItem('v4j_subscribers', JSON.stringify(subs));
+  }
   input.value = "";
-  showToast("📬 Terima kasih! Anda telah terdaftar dalam buletin mingguan Viral For Justice.");
+  showToast("📬 Terima kasih! Email Anda telah terdaftar dalam buletin mingguan Viral For Justice.");
 }
 
 function formatNumber(num) {
