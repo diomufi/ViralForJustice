@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="metaDesc" name="description" content="VIRAL FOR JUSTICE - Platform Jurnalisme Advokasi dan Pengawalan Keadilan Publik.">
+  <meta id="metaKeywords" name="keywords" content="viral for justice, berita hukum, kawal kasus, investigasi, keadilan">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta id="ogTitle" property="og:title" content="Berita - VIRAL FOR JUSTICE">
+  <meta id="ogDesc" property="og:description" content="Platform Jurnalisme Advokasi dan Pengawalan Keadilan Publik.">
+  <meta id="ogImage" property="og:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:type" content="article">
+  <meta id="ogUrl" property="og:url" content="https://viralforjustice.com/article.html">
+
+  <title id="pageTitle">Memuat Berita... | VIRAL FOR JUSTICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Dedicated Single Article Page Styles */
+    .article-page-layout {
+      padding: 2.5rem 0 4rem;
+    }
+    .article-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .article-main-card {
+      background: #FFFFFF;
+      border: 2px solid var(--color-black);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-3d);
+      padding: 2.5rem;
+      overflow: hidden;
+    }
+    .breadcrumb-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.825rem;
+      color: var(--color-gray-500);
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb-row a:hover { color: var(--color-crimson); }
+    .breadcrumb-sep { font-size: 0.7rem; color: var(--color-gray-300); }
+    
+    .article-header h1 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--color-black);
+      margin: 0.75rem 0 1.25rem;
+    }
+    .article-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-top: 1px solid var(--color-light-border);
+      border-bottom: 1px solid var(--color-light-border);
+      margin-bottom: 1.75rem;
+      gap: 1rem;
+    }
+    .author-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-black);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border: 2px solid var(--color-crimson);
+    }
+    .article-featured-media {
+      margin-bottom: 2rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 2px solid var(--color-black);
+    }
+    .article-featured-media img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+    }
+    .article-media-caption {
+      background: var(--color-gray-100);
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: var(--color-gray-500);
+      border-top: 1px solid var(--color-light-border);
+    }
+    .article-body-text {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #1E293B;
+    }
+    .article-body-text p { margin-bottom: 1.35rem; }
+    .article-body-text h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-black);
+      margin: 2rem 0 1rem;
+    }
+    .article-body-text ul {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    .article-body-text li {
+      margin-bottom: 0.5rem;
+    }
+    .article-action-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid var(--color-light-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .share-pill-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-share-social {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .btn-share-social.wa { background: #25D366; }
+    .btn-share-social.x { background: #000000; }
+    .btn-share-social.fb { background: #1877F2; }
+    .btn-share-social.tg { background: #24A1DE; }
+    .btn-share-social:hover { transform: scale(1.1); }
+
+    @media (max-width: 1024px) {
+      .article-grid-container { grid-template-columns: 1fr; }
+      .article-header h1 { font-size: 1.85rem; }
+      .article-main-card { padding: 1.5rem; }
+    }
+  </style>
+  
+  <!-- Dynamic JSON-LD Structured Data Container -->
+  <script id="articleSchema" type="application/ld+json"></script>
+</head>
+<body>
+
+  <!-- Top Announcement / Breaking Ticker -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-bolt"></i> BREAKING
+      </div>
+      <div class="ticker-wrapper">
+        <div class="ticker-track" id="tickerTrack">
+          <span class="ticker-item"><i class="fa-solid fa-triangle-exclamation text-crimson"></i> <strong>#KawalKasus:</strong> Portal Whistleblower & Case Tracker resmi dibuka untuk publik.</span>
+          <span class="ticker-item"><i class="fa-solid fa-triangle-exclamation text-crimson"></i> <strong>#ViralUpdate:</strong> Laporkan dugaan pelanggaran hukum di sekitar Anda secara aman dan anonim.</span>
+        </div>
+      </div>
+      <div class="top-bar-actions" style="display: flex; align-items: center; gap: 1rem;">
+        <span class="date-time" id="liveDateTime"><i class="fa-regular fa-clock"></i> Memuat...</span>
+        <a href="login.html" style="color: var(--color-crimson-light); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+          <i class="fa-solid fa-lock"></i> Login Office & Redaksi
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="header-left">
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Buka Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <a href="index.html" class="brand-logo" title="Kembali ke Beranda">
+          <div class="logo-box-3d">
+            <div class="logo-text">
+              <span class="word-viral">VIRAL</span>
+              <span class="word-for">FOR</span>
+              <span class="word-justice">JUSTICE</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a></li>
+          <li><a href="index.html#caseTrackerSection" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Kawal Kasus</a></li>
+          <li><a href="index.html#suaraWargaSection" class="nav-link"><i class="fa-solid fa-bullhorn"></i> Suara Publik</a></li>
+          <li><a href="index.html#cekFaktaSection" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Cek Fakta</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <a href="index.html#suaraWargaSection" class="btn btn-report">
+          <span class="pulse-dot"></span>
+          <i class="fa-solid fa-bullhorn"></i> <span>Kirim Laporan Kasus</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Single Article Main Section -->
+  <main class="article-page-layout">
+    <div class="container">
+      <div class="article-grid-container">
+        
+        <!-- Left: Article Content -->
+        <article class="article-main-card" id="articleContainer">
+          
+          <!-- Breadcrumb -->
+          <div class="breadcrumb-row">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+            <span class="breadcrumb-sep">/</span>
+            <span id="breadcrumbCategory" class="text-crimson font-bold">Investigasi</span>
+            <span class="breadcrumb-sep">/</span>
+            <span id="breadcrumbTitle" class="text-muted">Memuat...</span>
+          </div>
+
+          <!-- Article Header -->
+          <header class="article-header">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="badge-tag badge-red" id="articleCategoryBadge">LIPUTAN KHUSUS</span>
+              <span class="badge-tag badge-black" id="articleUrgencyBadge"><i class="fa-solid fa-shield-check"></i> Terverifikasi</span>
+            </div>
+            <h1 id="articleTitle">Memuat Judul Berita...</h1>
+          </header>
+
+          <!-- Meta Author & Timestamp -->
+          <div class="article-meta-bar">
+            <div class="author-badge">
+              <div class="author-avatar" id="authorAvatar">V4J</div>
+              <div>
+                <strong id="articleAuthor" style="color: var(--color-black); display: block; font-size: 0.95rem;">Tim Investigasi V4J</strong>
+                <span class="text-xs text-muted" id="articleDate">21 Agustus 2026</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.85rem; color: var(--color-gray-500);">
+              <span><i class="fa-regular fa-clock"></i> <span id="articleReadTime">5 Menit Baca</span></span>
+              <span class="text-crimson font-bold"><i class="fa-solid fa-fire"></i> <span id="articleViralScore">Viral Index: 99%</span></span>
+            </div>
+          </div>
+
+          <!-- Featured Main Image -->
+          <div class="article-featured-media">
+            <img id="articleImage" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" alt="Foto Liputan Berita">
+            <div class="article-media-caption">
+              <i class="fa-solid fa-camera"></i> Dokumentasi Tim Investigasi Viral For Justice • Seluruh dokumen bukti telah diverifikasi forensik.
+            </div>
+          </div>
+
+          <!-- Article Body -->
+          <div class="article-body-text" id="articleBody">
+            <p>Memuat isi artikel...</p>
+          </div>
+
+          <!-- Article Footer Action -->
+          <div class="article-action-footer">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <button class="btn btn-crimson" id="btnSupportArticle" onclick="handleSupportCurrentArticle()">
+                <i class="fa-solid fa-hand-fist"></i> Dukung & Kawal Kasus Ini (<span id="supportCount">0</span>)
+              </button>
+            </div>
+
+            <div class="share-pill-group">
+              <span class="text-xs text-muted font-bold">BAGIKAN:</span>
+              <a href="javascript:void(0)" class="btn-share-social wa" onclick="shareTo('wa')" title="Bagikan ke WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="javascript:void(0)" class="btn-share-social x" onclick="shareTo('x')" title="Bagikan ke X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="javascript:void(0)" class="btn-share-social fb" onclick="shareTo('fb')" title="Bagikan ke Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="javascript:void(0)" class="btn-share-social tg" onclick="shareTo('tg')" title="Bagikan ke Telegram"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Right: Sidebar -->
+        <aside class="hero-sidebar">
+          
+          <!-- Whistleblower Card -->
+          <div class="card whistleblower-banner">
+            <div class="wb-content">
+              <div class="wb-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <h4>Tahu Informasi Tambahan?</h4>
+                <p>Kirimkan bukti atau laporkan kasus baru secara aman & anonim.</p>
+              </div>
+            </div>
+            <a href="index.html#suaraWargaSection" class="btn btn-white-banner btn-block">
+              <i class="fa-solid fa-paper-plane"></i> Kirim Laporan Pengaduan
+            </a>
+          </div>
+
+          <!-- Redaksi Transparency Box -->
+          <div class="card sidebar-box urgent-box">
+            <div class="sidebar-header">
+              <h3><i class="fa-solid fa-scale-balanced text-crimson"></i> STANDAR JURNALISME</h3>
+            </div>
+            <p class="sidebar-sub">Pedoman Liputan Investigasi Viral For Justice</p>
+            <div style="font-size: 0.85rem; color: var(--color-gray-700); line-height: 1.6;">
+              <p style="margin-bottom: 0.75rem;"><i class="fa-solid fa-check text-crimson"></i> <strong>Verifikasi Dokumen:</strong> Setiap bukti diuji keaslian data dan metadatanya.</p>
+              <p style="margin-bottom: 0.75rem;"><i class="fa-solid fa-check text-crimson"></i> <strong>Hak Jawab:</strong> Kami membuka ruang klarifikasi seluas-luasnya bagi pihak terkait.</p>
+              <p><i class="fa-solid fa-check text-crimson"></i> <strong>Perlindungan Saksi:</strong> Kerahasiaan identitas whistleblower dilindungi penuh.</p>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo-box-3d small-logo">
+          <div class="logo-text">
+            <span class="word-viral">VIRAL</span>
+            <span class="word-for">FOR</span>
+            <span class="word-justice">JUSTICE</span>
+          </div>
+        </div>
+        <p class="footer-tagline">
+          Portal Berita Advokasi & Gerakan Kawal Keadilan Sosial Berbasis Jurnalisme Independen dan Partisipasi Publik.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="index.html">Beranda Portal</a></li>
+          <li><a href="index.html#caseTrackerSection">Public Case Tracker</a></li>
+          <li><a href="index.html#suaraWargaSection">Kirim Pengaduan</a></li>
+          <li><a href="admin.html">Portal Redaksi (CMS)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hubungi Redaksi</h4>
+        <p class="footer-contact-info">
+          <i class="fa-solid fa-envelope"></i> redaksi@viralforjustice.com<br>
+          <i class="fa-solid fa-location-dot"></i> Jakarta, Indonesia
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 <strong>VIRAL FOR JUSTICE</strong>. Seluruh Hak Cipta Dilindungi.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Script Logic -->
+  <script src="app.js"></script>
+  <script>
+    let currentArticleData = null;
+
+    function loadSingleArticlePage() {
+      // 1. Get article id from URL params
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleId = parseInt(urlParams.get('id')) || 1;
+
+      // 2. Load stored articles
+      loadStoredData();
+
+      // 3. Find target article
+      currentArticleData = articlesData.find(a => a.id === articleId) || articlesData[0];
+
+      if (!currentArticleData) return;
+
+      // 4. Update Page Titles & SEO Meta Tags for Google
+      document.title = `${currentArticleData.title} | VIRAL FOR JUSTICE`;
+      document.getElementById('pageTitle').textContent = `${currentArticleData.title} | VIRAL FOR JUSTICE`;
+      
+      const metaDesc = document.getElementById('metaDesc');
+      if (metaDesc) metaDesc.setAttribute('content', currentArticleData.excerpt);
+      
+      const ogTitle = document.getElementById('ogTitle');
+      if (ogTitle) ogTitle.setAttribute('content', currentArticleData.title);
+      
+      const ogDesc = document.getElementById('ogDesc');
+      if (ogDesc) ogDesc.setAttribute('content', currentArticleData.excerpt);
+
+      const ogImage = document.getElementById('ogImage');
+      if (ogImage) ogImage.setAttribute('content', currentArticleData.image);
+
+      const ogUrl = document.getElementById('ogUrl');
+      if (ogUrl) ogUrl.setAttribute('content', window.location.href);
+
+      // 5. Inject Google News Schema.org JSON-LD
+      const schemaScript = document.getElementById('articleSchema');
+      if (schemaScript) {
+        schemaScript.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          "headline": currentArticleData.title,
+          "image": [currentArticleData.image],
+          "datePublished": "2026-08-21T08:00:00+07:00",
+          "dateModified": new Date().toISOString(),
+          "author": [{
+            "@type": "Person",
+            "name": currentArticleData.author,
+            "url": "https://viralforjustice.com/redaksi"
+          }],
+          "publisher": {
+            "@type": "NewsMediaOrganization",
+            "name": "VIRAL FOR JUSTICE",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://viralforjustice.com/logo.png"
+            }
+          },
+          "description": currentArticleData.excerpt
+        });
+      }
+
+      // 6. Render UI Elements
+      document.getElementById('breadcrumbCategory').textContent = currentArticleData.categoryLabel;
+      document.getElementById('breadcrumbTitle').textContent = currentArticleData.title.substring(0, 45) + '...';
+      document.getElementById('articleCategoryBadge').textContent = currentArticleData.categoryLabel;
+      document.getElementById('articleTitle').textContent = currentArticleData.title;
+      document.getElementById('articleAuthor').textContent = currentArticleData.author;
+      document.getElementById('articleDate').textContent = currentArticleData.date;
+      document.getElementById('articleReadTime').textContent = currentArticleData.readTime;
+      document.getElementById('articleViralScore').textContent = `Viral Index: ${currentArticleData.viralScore}`;
+      document.getElementById('articleImage').src = currentArticleData.image;
+      document.getElementById('articleImage').alt = currentArticleData.title;
+      document.getElementById('articleBody').innerHTML = currentArticleData.content;
+      document.getElementById('supportCount').textContent = formatNumber(currentArticleData.supports);
+    }
+
+    function handleSupportCurrentArticle() {
+      if (currentArticleData) {
+        currentArticleData.supports += 1;
+        document.getElementById('supportCount').textContent = formatNumber(currentArticleData.supports);
+        localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+        showToast('✊ Terima kasih telah mendukung dan mengawal keadilan kasus ini!');
+      }
+    }
+
+    function shareTo(platform) {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent(`[VIRAL FOR JUSTICE] ${currentArticleData.title}\nBaca laporan lengkap dan kawal bersama di sini: `);
+      
+      let shareUrl = '';
+      if (platform === 'wa') {
+        shareUrl = `https://api.whatsapp.com/send?text=${text}%20${url}`;
+      } else if (platform === 'x') {
+        shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+      } else if (platform === 'fb') {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      } else if (platform === 'tg') {
+        shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+      }
+
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadSingleArticlePage();
+    });
+  </script>
+</body>
+</html>

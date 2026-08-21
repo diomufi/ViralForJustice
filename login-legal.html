@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Satgas Whistleblower & Legal - VIRAL FOR JUSTICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0B0E14;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .auth-page-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.25rem;
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 480px;
+      background: #FFFFFF;
+      border: 3px solid #000000;
+      border-radius: var(--radius-lg);
+      box-shadow: 10px 10px 0px #10B981;
+      overflow: hidden;
+    }
+    .auth-header {
+      background: #0B0E14;
+      color: #FFFFFF;
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 3px solid #000000;
+      text-align: center;
+    }
+    .auth-badge-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #10B981;
+      color: #FFFFFF;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      margin-top: 0.75rem;
+      border: 1px solid #000000;
+    }
+    .auth-body {
+      padding: 2.25rem 2rem;
+    }
+    .auth-demo-hint {
+      background: #F0FDF4;
+      border: 1.5px dashed #10B981;
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      color: #065F46;
+    }
+    .auth-footer {
+      border-top: 2px solid var(--color-light-border);
+      padding: 1.25rem 2rem;
+      background: var(--color-gray-100);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge" style="background: #10B981;">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-scale-balanced"></i> LEGAL AUTH
+      </div>
+      <div class="ticker-wrapper">
+        <span class="text-xs text-white">Gerbang Akses Khusus: Satgas Whistleblower, Tim Advokasi Hukum & Audit Bukti</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="index.html" style="color: #FFFFFF;"><i class="fa-solid fa-arrow-left"></i> Website Publik</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-page-wrapper">
+    <div class="auth-card">
+      
+      <!-- Card Header -->
+      <div class="auth-header">
+        <div class="logo-box-3d small-logo" style="display: inline-flex; margin-bottom: 0.75rem;">
+          <div class="logo-text">
+            <span class="word-viral">VIRAL</span>
+            <span class="word-for">FOR</span>
+            <span class="word-justice">JUSTICE</span>
+          </div>
+        </div>
+        <h2 style="font-family: var(--font-heading); font-size: 1.65rem; line-height: 1.2;">
+          Login Whistleblower & Legal
+        </h2>
+        <div class="auth-badge-role">
+          <i class="fa-solid fa-vault"></i> VAULT ACCESS & LEGAL CLEARANCE
+        </div>
+      </div>
+
+      <!-- Card Body -->
+      <div class="auth-body">
+        
+        <div class="auth-demo-hint">
+          <strong><i class="fa-solid fa-circle-info"></i> Info Kredensial Satgas Legal:</strong><br>
+          Email: <code>legal@viralforjustice.com</code><br>
+          Otoritas: Dekripsi Bukti Whistleblower, Uji Bukti & Legal Clearance
+        </div>
+
+        <form id="legalLoginForm" onsubmit="handleLegalLogin(event)">
+          <div class="form-group">
+            <label for="lEmail">Email Advokat / ID Satgas Legal</label>
+            <input type="email" id="lEmail" class="form-control" value="legal@viralforjustice.com" required placeholder="legal@viralforjustice.com">
+          </div>
+
+          <div class="form-group">
+            <label for="lPassword">Kata Sandi Akun Legal</label>
+            <input type="password" id="lPassword" class="form-control" value="••••••••••••" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lMasterKey">Master Security Passkey (Kunci Enkripsi Vault)</label>
+            <input type="password" id="lMasterKey" class="form-control font-mono" value="VAULT-MASTER-KEY-2026" required>
+          </div>
+
+          <button type="submit" class="btn btn-crimson btn-block" style="padding: 0.85rem; font-size: 1rem; margin-top: 1.5rem;">
+            <i class="fa-solid fa-unlock-keyhole"></i> Buka Meja Whistleblower & Legal
+          </button>
+        </form>
+
+      </div>
+
+      <!-- Card Footer -->
+      <div class="auth-footer">
+        <a href="login-pemred.html" class="text-muted"><i class="fa-solid fa-crown"></i> Login Pemred</a>
+        <a href="login-jurnalis.html" class="text-muted"><i class="fa-solid fa-pen-nib"></i> Login Jurnalis</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="app.js"></script>
+  <script>
+    function handleLegalLogin(e) {
+      e.preventDefault();
+      showToast('⚖️ Kunci Enkripsi Vault Valid! Membuka Meja Kerja Satgas Legal...');
+      setTimeout(() => {
+        window.location.href = 'legal.html';
+      }, 800);
+    }
+  </script>
+</body>
+</html>

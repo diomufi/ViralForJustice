@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Portal Redaksi & Office - VIRAL FOR JUSTICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0B0E14;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.25rem;
+    }
+    .login-card-container {
+      width: 100%;
+      max-width: 960px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      background: #FFFFFF;
+      border: 3px solid #000000;
+      border-radius: var(--radius-lg);
+      box-shadow: 10px 10px 0px var(--color-crimson);
+      overflow: hidden;
+    }
+    .login-brand-side {
+      background: #0B0E14;
+      color: #FFFFFF;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 3px solid #000000;
+    }
+    .login-form-side {
+      padding: 3rem 2.5rem;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .role-select-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin: 1.5rem 0;
+    }
+    .role-login-card {
+      border: 2px solid var(--color-light-border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--color-black);
+    }
+    .role-login-card:hover {
+      border-color: var(--color-crimson);
+      background: #FFF5F5;
+      transform: translateX(4px);
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .rlc-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .rlc-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border: 2px solid #000000;
+    }
+    .rlc-info strong { font-size: 0.95rem; display: block; color: var(--color-black); }
+    .rlc-info span { font-size: 0.75rem; color: var(--color-gray-500); }
+
+    @media (max-width: 768px) {
+      .login-card-container { grid-template-columns: 1fr; }
+      .login-brand-side { padding: 2rem; border-right: none; border-bottom: 3px solid #000000; }
+      .login-form-side { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-lock"></i> INTERNAL ACCESS
+      </div>
+      <div class="ticker-wrapper">
+        <span class="text-xs text-white">Sistem Otentikasi Redaksi & Advokasi Hukum Viral For Justice Terenkripsi</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="index.html" style="color: #FFFFFF;"><i class="fa-solid fa-arrow-left"></i> Kembali ke Website Publik</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-wrapper">
+    <div class="login-card-container">
+      
+      <!-- Brand & Information Side -->
+      <div class="login-brand-side">
+        <div>
+          <div class="logo-box-3d" style="display: inline-flex; margin-bottom: 1.5rem;">
+            <div class="logo-text">
+              <span class="word-viral">VIRAL</span>
+              <span class="word-for">FOR</span>
+              <span class="word-justice">JUSTICE</span>
+            </div>
+          </div>
+          <h2 style="font-family: var(--font-heading); font-size: 1.85rem; line-height: 1.2; margin-bottom: 0.75rem;">
+            Portal Redaksi & Ruang Kerja Tim
+          </h2>
+          <p class="text-sm" style="color: #CBD5E1; line-height: 1.6;">
+            Sistem terintegrasi untuk jurnalisme investigasi, pengawalan kasus publik, verifikasi bukti whistleblower, dan legal clearance.
+          </p>
+        </div>
+
+        <div style="border-top: 1px solid #1E2433; padding-top: 1.25rem; font-size: 0.8rem; color: #94A3B8;">
+          <i class="fa-solid fa-shield-check text-crimson"></i> <strong>Keamanan Terenkripsi:</strong> Akses data sensitif saksi dan bukti investigasi dilindungi standar UU PDP.
+        </div>
+      </div>
+
+      <!-- Form & Role Desks Selection Side -->
+      <div class="login-form-side">
+        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: #0B0E14; margin-bottom: 0.35rem;">
+          Pilih Meja Kerja Role Anda:
+        </h3>
+        <p class="text-sm text-muted">Klik salah satu role untuk langsung masuk ke dashboard kerja masing-masing:</p>
+
+        <div class="role-select-grid">
+          
+          <!-- Role 1: Pemred -->
+          <a href="pemred.html" class="role-login-card">
+            <div class="rlc-left">
+              <div class="rlc-avatar" style="background: var(--color-crimson);">AP</div>
+              <div class="rlc-info">
+                <strong>Pemimpin Redaksi (Super Admin)</strong>
+                <span>Ahmad Pratama • Akses Penuh, Approval & Vault</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-crimson"></i>
+          </a>
+
+          <!-- Role 2: Jurnalis -->
+          <a href="jurnalis.html" class="role-login-card">
+            <div class="rlc-left">
+              <div class="rlc-avatar" style="background: #0B0E14;">DL</div>
+              <div class="rlc-info">
+                <strong>Redaktur & Jurnalis</strong>
+                <span>Diana Lestari • Tulis Draf, Liputan & Case Tracker</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-crimson"></i>
+          </a>
+
+          <!-- Role 3: Legal & Whistleblower -->
+          <a href="legal.html" class="role-login-card">
+            <div class="rlc-left">
+              <div class="rlc-avatar" style="background: #10B981;">BW</div>
+              <div class="rlc-info">
+                <strong>Satgas Whistleblower & Legal</strong>
+                <span>Bambang Wijaya, S.H. • Vault Aduan & Legal Clearance</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-arrow-right text-crimson"></i>
+          </a>
+
+        </div>
+
+        <div style="margin-top: 1rem; text-align: center; border-top: 1px solid var(--color-light-border); padding-top: 1rem;">
+          <a href="index.html" class="text-xs font-bold text-crimson"><i class="fa-solid fa-globe"></i> Buka Beranda Website Publik</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

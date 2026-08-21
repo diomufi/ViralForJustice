@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meja Kerja Satgas Whistleblower & Legal - VIRAL FOR JUSTICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-light-bg); color: var(--color-gray-900); }
+    .dashboard-layout { display: flex; min-height: 100vh; }
+    
+    .dash-sidebar {
+      width: 280px;
+      background: #0B0E14;
+      border-right: 3px solid #000000;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .dash-sidebar-header {
+      padding: 1.5rem 1.25rem 1rem;
+      border-bottom: 2px solid #1E2433;
+    }
+    .user-card {
+      background: #141824;
+      border: 2px solid #000000;
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 3px 3px 0px #10B981;
+    }
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #10B981;
+      color: #FFFFFF;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000000;
+    }
+    .dash-nav {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+    .dash-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      color: #CBD5E1;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+      text-decoration: none;
+    }
+    .dash-nav-item:hover, .dash-nav-item.active {
+      color: #FFFFFF;
+      background: rgba(16, 185, 129, 0.15);
+      border-left-color: #10B981;
+    }
+    .dash-nav-item i { width: 22px; font-size: 1.1rem; text-align: center; }
+
+    .dash-main { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
+    .dash-topbar {
+      background: #FFFFFF;
+      border-bottom: 2px solid #000000;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .dash-body { padding: 2rem; max-width: 1320px; width: 100%; margin: 0 auto; }
+    
+    .white-card {
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-3d);
+    }
+    .card-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid var(--color-light-border);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .card-header-flex h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-black);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .legal-guideline-box {
+      background: #0B0E14;
+      color: #FFFFFF;
+      border: 2px solid #000000;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 3px 3px 0px #10B981;
+    }
+
+    .dash-table { width: 100%; border-collapse: collapse; }
+    .dash-table th { background: #0B0E14; color: #FFFFFF; padding: 0.85rem 1rem; font-size: 0.825rem; text-align: left; font-family: var(--font-heading); letter-spacing: 0.04em; }
+    .dash-table td { padding: 1rem; border-bottom: 1px solid var(--color-light-border); font-size: 0.875rem; vertical-align: middle; }
+    .dash-table tr:hover td { background: #F0FDF4; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge" style="background: #10B981;">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-scale-balanced"></i> LEGAL & WHISTLEBLOWER
+      </div>
+      <div class="ticker-wrapper">
+        <span class="text-xs text-white">Biro Verifikasi Bukti Digital, Uji Fakta Hukum, dan Perlindungan Kerahasiaan Saksi</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="login.html" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-right-from-bracket"></i> Ganti Role / Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="brand-logo" title="Viral For Justice">
+          <div class="logo-box-3d small-logo">
+            <div class="logo-text">
+              <span class="word-viral">VIRAL</span>
+              <span class="word-for">FOR</span>
+              <span class="word-justice">JUSTICE</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- User Profile -->
+        <div class="user-card">
+          <div class="user-avatar">BW</div>
+          <div>
+            <strong style="font-size: 0.875rem; display: block; color: #FFFFFF;">Bambang Wijaya, S.H.</strong>
+            <span class="badge-tag" style="background: #10B981; color: #FFFFFF; font-size: 0.65rem;">SATGAS LEGAL & VAULT</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="dash-nav">
+        <div class="dash-nav-item active" onclick="switchLegalTab('vaultInboxTab')">
+          <i class="fa-solid fa-vault text-green-400"></i> <span>Whistleblower Vault (<span id="legalVaultCount">1</span>)</span>
+        </div>
+        <div class="dash-nav-item" onclick="switchLegalTab('clearanceTab')">
+          <i class="fa-solid fa-scale-balanced text-blue-400"></i> <span>Legal Clearance Studio</span>
+        </div>
+
+        <div style="margin-top: auto; padding: 1.25rem;">
+          <a href="index.html" target="_blank" class="btn btn-report btn-block" style="font-size: 0.8rem;">
+            <i class="fa-solid fa-globe"></i> Buka Website Publik
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dash-main">
+      
+      <!-- Topbar -->
+      <div class="dash-topbar">
+        <div>
+          <strong style="font-size: 1.2rem; color: #0B0E14;">Meja Kerja Satgas Whistleblower & Legal Counsel</strong>
+          <p class="text-xs text-muted">Kepatuhan UU ITE, Penyamaran Identitas Saksi, dan Validasi Bukti Forensik</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="pemred.html" class="btn btn-secondary" style="font-size: 0.8rem;"><i class="fa-solid fa-crown"></i> Meja Pemred</a>
+          <a href="jurnalis.html" class="btn btn-secondary" style="font-size: 0.8rem;"><i class="fa-solid fa-feather"></i> Meja Jurnalis</a>
+        </div>
+      </div>
+
+      <div class="dash-body">
+        
+        <!-- TAB 1: Whistleblower Vault Inbox -->
+        <div id="vaultInboxTab" class="legal-tab-content">
+          <div class="white-card">
+            <div class="card-header-flex">
+              <h2><i class="fa-solid fa-vault text-green-500"></i> Kotak Masuk Aduan Whistleblower Terenkripsi</h2>
+              <span class="badge-tag badge-red"><i class="fa-solid fa-lock"></i> Perlindungan UU PDP</span>
+            </div>
+            
+            <p class="text-sm text-muted mb-4">
+              Setiap aduan yang masuk dari portal publik dianalisis di sini untuk verifikasi keaslian bukti dan penyamaran identitas pelapor sebelum ditugaskan ke jurnalis.
+            </p>
+
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Kode Tiket</th>
+                    <th>Judul Dugaan Kasus</th>
+                    <th>Kategori</th>
+                    <th>Status Verifikasi</th>
+                    <th>Waktu Masuk</th>
+                    <th>Tindakan Satgas</th>
+                  </tr>
+                </thead>
+                <tbody id="legalVaultTable">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: Legal Clearance Studio -->
+        <div id="clearanceTab" class="legal-tab-content hidden">
+          <div class="white-card">
+            <div class="card-header-flex">
+              <h2><i class="fa-solid fa-scale-balanced text-blue-500"></i> 4 Pilar Standar Legal Clearance Redaksi</h2>
+              <span class="badge-tag badge-black">Mitigasi Risiko Hukum</span>
+            </div>
+
+            <!-- 4 Pillar Guidelines -->
+            <div class="legal-guideline-box">
+              <h4 style="color: #34D399; font-size: 1.05rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-shield-halved"></i> Protokol Kepatuhan Sebelum Berita Diterbitkan:</h4>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.85rem; color: #CBD5E1;">
+                <div><i class="fa-solid fa-check text-green-400"></i> <strong>1. Uji Keaslian Metadata Bukti:</strong> Foto, video, dan rekening bank bebas rekayasa AI/manipulasi.</div>
+                <div><i class="fa-solid fa-check text-green-400"></i> <strong>2. Hak Jawab & Konfirmasi:</strong> Catatan upaya konfirmasi ke pihak terkait telah disertakan.</div>
+                <div><i class="fa-solid fa-check text-green-400"></i> <strong>3. Anonymization Saksi:</strong> Nama korban dan saksi kunci telah disamarkan secara aman.</div>
+                <div><i class="fa-solid fa-check text-green-400"></i> <strong>4. Presumption of Innocence:</strong> Draf bebas dari narasi menghakimi sebelum vonis berkekuatan hukum tetap.</div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Judul Draf Berita</th>
+                    <th>Penulis</th>
+                    <th>Status Legal</th>
+                    <th>Aksi Verifikasi</th>
+                  </tr>
+                </thead>
+                <tbody id="legalClearanceTable">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    function switchLegalTab(tabId) {
+      document.querySelectorAll('.legal-tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.dash-nav-item').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
+      event.currentTarget.classList.add('active');
+    }
+
+    function renderLegalDesk() {
+      loadStoredData();
+      document.getElementById('legalVaultCount').textContent = caseTrackerData.length;
+
+      const vbody = document.getElementById('legalVaultTable');
+      if (vbody) {
+        vbody.innerHTML = caseTrackerData.map(r => `
+          <tr>
+            <td><code>${r.ticketCode}</code></td>
+            <td><strong>${r.title}</strong></td>
+            <td>${r.category}</td>
+            <td><span class="tc-status-badge status-${r.status}">${r.statusLabel}</span></td>
+            <td>${r.updated}</td>
+            <td>
+              <button class="btn btn-sm-outline" onclick="verifyAndAssign('${r.ticketCode}')">
+                <i class="fa-solid fa-shield-check"></i> Verifikasi & Tugaskan ke Jurnalis
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      const cbody = document.getElementById('legalClearanceTable');
+      if (cbody) {
+        cbody.innerHTML = articlesData.map(a => `
+          <tr>
+            <td><strong>${a.title}</strong></td>
+            <td>${a.author}</td>
+            <td><span class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid #10B981;"><i class="fa-solid fa-circle-check"></i> Cleared</span></td>
+            <td>
+              <button class="btn btn-sm-outline" onclick="grantClearanceLegal(${a.id})">
+                <i class="fa-solid fa-stamp"></i> Berikan Stempel Legal
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    function verifyAndAssign(ticket) {
+      showToast(`⚖️ Bukti tiket ${ticket} diverifikasi Satgas Legal dan diteruskan ke Meja Jurnalis.`);
+    }
+
+    function grantClearanceLegal(id) {
+      showToast('✅ Legal Clearance diberikan: Berita siap dirilis oleh Pemimpin Redaksi!');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLegalDesk();
+    });
+  </script>
+</body>
+</html>

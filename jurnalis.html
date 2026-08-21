@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meja Kerja Redaktur & Jurnalis - VIRAL FOR JUSTICE</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background-color: var(--color-light-bg); color: var(--color-gray-900); }
+    .dashboard-layout { display: flex; min-height: 100vh; }
+    
+    .dash-sidebar {
+      width: 280px;
+      background: #0B0E14;
+      border-right: 3px solid #000000;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .dash-sidebar-header {
+      padding: 1.5rem 1.25rem 1rem;
+      border-bottom: 2px solid #1E2433;
+    }
+    .user-card {
+      background: #141824;
+      border: 2px solid #000000;
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 3px 3px 0px #000000;
+    }
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #0B0E14;
+      color: #FFFFFF;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--color-crimson);
+    }
+    .dash-nav {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+    .dash-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      color: #CBD5E1;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+      text-decoration: none;
+    }
+    .dash-nav-item:hover, .dash-nav-item.active {
+      color: #FFFFFF;
+      background: rgba(200, 16, 46, 0.15);
+      border-left-color: var(--color-crimson);
+    }
+    .dash-nav-item i { width: 22px; font-size: 1.1rem; text-align: center; }
+
+    .dash-main { flex: 1; display: flex; flex-direction: column; overflow-x: hidden; }
+    .dash-topbar {
+      background: #FFFFFF;
+      border-bottom: 2px solid #000000;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .dash-body { padding: 2rem; max-width: 1320px; width: 100%; margin: 0 auto; }
+    
+    .white-card {
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-3d);
+    }
+    .card-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid var(--color-light-border);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .card-header-flex h2 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-black);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .google-preview-box {
+      background: #0B0E14;
+      border: 2px solid #000000;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      box-shadow: 3px 3px 0px var(--color-crimson);
+    }
+    .google-header { font-size: 0.75rem; color: #94A3B8; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+    .google-url { font-size: 0.8rem; color: #34D399; font-family: 'JetBrains Mono', monospace; word-break: break-all; }
+    .google-title { font-size: 1.15rem; color: #60A5FA; font-weight: 700; margin: 0.2rem 0; line-height: 1.3; }
+    .google-desc { font-size: 0.85rem; color: #CBD5E1; line-height: 1.5; }
+
+    .dash-table { width: 100%; border-collapse: collapse; }
+    .dash-table th { background: #0B0E14; color: #FFFFFF; padding: 0.85rem 1rem; font-size: 0.825rem; text-align: left; font-family: var(--font-heading); letter-spacing: 0.04em; }
+    .dash-table td { padding: 1rem; border-bottom: 1px solid var(--color-light-border); font-size: 0.875rem; vertical-align: middle; }
+    .dash-table tr:hover td { background: #FFF5F5; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-pen-nib"></i> MEJA JURNALIS
+      </div>
+      <div class="ticker-wrapper">
+        <span class="text-xs text-white">Studio Penulisan Investigasi, Pengumpulan Bukti, dan Pemantau Kasus</span>
+      </div>
+      <div class="top-bar-actions">
+        <a href="login.html" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-right-from-bracket"></i> Ganti Role / Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dash-sidebar">
+      <div class="dash-sidebar-header">
+        <a href="index.html" class="brand-logo" title="Viral For Justice">
+          <div class="logo-box-3d small-logo">
+            <div class="logo-text">
+              <span class="word-viral">VIRAL</span>
+              <span class="word-for">FOR</span>
+              <span class="word-justice">JUSTICE</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- User Profile -->
+        <div class="user-card">
+          <div class="user-avatar">DL</div>
+          <div>
+            <strong style="font-size: 0.9rem; display: block; color: #FFFFFF;">Diana Lestari</strong>
+            <span class="badge-tag badge-red" style="font-size: 0.65rem;">REDAKTUR & JURNALIS</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="dash-nav">
+        <div class="dash-nav-item active" onclick="switchJurnalisTab('writeTab')">
+          <i class="fa-solid fa-feather-pointed text-crimson"></i> <span>Tulis Berita Baru</span>
+        </div>
+        <div class="dash-nav-item" onclick="switchJurnalisTab('myArticlesTab')">
+          <i class="fa-solid fa-newspaper"></i> <span>Daftar Liputan Saya (<span id="jurnalisArticleCount">1</span>)</span>
+        </div>
+        <div class="dash-nav-item" onclick="switchJurnalisTab('assignmentsTab')">
+          <i class="fa-solid fa-clipboard-list"></i> <span>Kasus Ditugaskan</span>
+        </div>
+
+        <div style="margin-top: auto; padding: 1.25rem;">
+          <a href="index.html" target="_blank" class="btn btn-report btn-block" style="font-size: 0.8rem;">
+            <i class="fa-solid fa-globe"></i> Buka Website Publik
+          </a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Area -->
+    <main class="dash-main">
+      
+      <!-- Topbar -->
+      <div class="dash-topbar">
+        <div>
+          <strong style="font-size: 1.2rem; color: #0B0E14;">Studio Penulisan Berita & Liputan Investigasi</strong>
+          <p class="text-xs text-muted">Jurnalisme Advokasi Berbasis Fakta & Bukti Teruji</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="pemred.html" class="btn btn-secondary" style="font-size: 0.8rem;"><i class="fa-solid fa-crown"></i> Meja Pemred</a>
+          <a href="legal.html" class="btn btn-secondary" style="font-size: 0.8rem;"><i class="fa-solid fa-scale-balanced"></i> Meja Legal</a>
+        </div>
+      </div>
+
+      <div class="dash-body">
+        
+        <!-- TAB 1: Tulis Berita Baru -->
+        <div id="writeTab" class="jurnalis-tab-content">
+          <div class="white-card">
+            <div class="card-header-flex">
+              <h2><i class="fa-solid fa-pen-nib text-crimson"></i> Tulis & Siapkan Liputan Kasus</h2>
+              <span class="badge-tag badge-black"><i class="fa-solid fa-shield-check"></i> Mode Jurnalis</span>
+            </div>
+
+            <form id="jurnalisNewsForm" onsubmit="handleJurnalisSubmit(event)">
+              <div class="form-group">
+                <label for="jTitle">Judul Liputan Investigasi <span class="text-crimson">*</span></label>
+                <input type="text" id="jTitle" class="form-control" placeholder="Contoh: Skandal Penggelapan Pajak Daerah Senilai Rp 20 Miliar Terkuak" required oninput="updateJurnalisPreview()">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <label for="jCategory">Kategori Kasus <span class="text-crimson">*</span></label>
+                  <select id="jCategory" class="form-control" required onchange="updateJurnalisPreview()">
+                    <option value="hukum">Hukum & Kriminal</option>
+                    <option value="korupsi">Korupsi & Bansos</option>
+                    <option value="ham">Pelanggaran HAM</option>
+                    <option value="tanah">Konflik Agraria</option>
+                    <option value="digital">Kejahatan Siber</option>
+                    <option value="lingkungan">Kerusakan Lingkungan</option>
+                  </select>
+                </div>
+                <div class="form-group col-6">
+                  <label for="jAuthor">Nama Penulis / Reporter <span class="text-crimson">*</span></label>
+                  <input type="text" id="jAuthor" class="form-control" value="Diana Lestari (Tim Investigasi V4J)" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-8">
+                  <label for="jImage">URL Foto Liputan / Dokumentasi <span class="text-crimson">*</span></label>
+                  <input type="url" id="jImage" class="form-control" placeholder="https://images.unsplash.com/photo-xxx..." value="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80" required>
+                </div>
+                <div class="form-group col-4">
+                  <label for="jReadTime">Estimasi Waktu Baca</label>
+                  <input type="text" id="jReadTime" class="form-control" value="5 Menit Baca">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="jExcerpt">Ringkasan / Paragraf Pembuka (Lead Berita) <span class="text-crimson">*</span></label>
+                <textarea id="jExcerpt" rows="3" class="form-control" placeholder="Tuliskan ringkasan fakta untuk lead berita..." required oninput="updateJurnalisPreview()"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="jQuote">Temuan Bukti / Kutipan Forensik Redaksi (Opsional)</label>
+                <input type="text" id="jQuote" class="form-control" placeholder='Contoh: "Ditemukan kwitansi ganda dan rekaman percakapan oknum..."'>
+              </div>
+
+              <div class="form-group">
+                <label for="jContent">Isi Lengkap Laporan / Artikel Berita <span class="text-crimson">*</span></label>
+                <textarea id="jContent" rows="8" class="form-control" placeholder="Tuliskan analisis fakta, kronologi peristiwa, kutipan narasumber, dan pasal perundangan yang dilanggar..." required></textarea>
+              </div>
+
+              <!-- Google SEO Live Preview -->
+              <div class="google-preview-box">
+                <div class="google-header">
+                  <i class="fa-brands fa-google text-crimson"></i> <strong>PRATINJAU TAMPILAN PENCARIAN GOOGLE:</strong>
+                </div>
+                <div class="google-url" id="jPreviewUrl">https://viralforjustice.com/article.html?id=102</div>
+                <div class="google-title" id="jPreviewTitle">Judul Berita | VIRAL FOR JUSTICE</div>
+                <div class="google-desc" id="jPreviewDesc">Ringkasan berita akan muncul di sini sebagai cuplikan meta description Google...</div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                <button type="button" class="btn btn-secondary" onclick="showToast('💾 Draf liputan berhasil disimpan di memori lokal.')">
+                  <i class="fa-regular fa-floppy-disk"></i> Simpan Draf
+                </button>
+                <button type="submit" class="btn btn-crimson" style="padding: 0.75rem 2rem; font-size: 1rem;">
+                  <i class="fa-solid fa-paper-plane"></i> 🚀 Terbitkan Berita ke Portal
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- TAB 2: Daftar Liputan Saya -->
+        <div id="myArticlesTab" class="jurnalis-tab-content hidden">
+          <div class="white-card">
+            <div class="card-header-flex">
+              <h2><i class="fa-solid fa-newspaper text-crimson"></i> Daftar Berita & Liputan Saya</h2>
+              <button class="btn btn-crimson" onclick="switchJurnalisTab('writeTab')"><i class="fa-solid fa-plus"></i> Tulis Berita Baru</button>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Judul Artikel</th>
+                    <th>Kategori</th>
+                    <th>Tanggal</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="jurnalisArticlesTable">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: Kasus Ditugaskan -->
+        <div id="assignmentsTab" class="jurnalis-tab-content hidden">
+          <div class="white-card">
+            <div class="card-header-flex">
+              <h2><i class="fa-solid fa-clipboard-list text-crimson"></i> Papan Penugasan Liputan Kasus</h2>
+              <span class="badge-tag badge-black">Dari Whistleblower / Pemred</span>
+            </div>
+            <p class="text-sm text-muted mb-4">Kasus aduan masyarakat yang telah diverifikasi Satgas Legal dan ditugaskan kepada reporter untuk investigasi lapangan.</p>
+
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Kode Tiket</th>
+                    <th>Kasus Ditugaskan</th>
+                    <th>Kategori</th>
+                    <th>Status Verifikasi</th>
+                    <th>Aksi Jurnalis</th>
+                  </tr>
+                </thead>
+                <tbody id="jurnalisAssignmentsTable">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    function switchJurnalisTab(tabId) {
+      document.querySelectorAll('.jurnalis-tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.dash-nav-item').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
+      event.currentTarget.classList.add('active');
+    }
+
+    function updateJurnalisPreview() {
+      const title = document.getElementById('jTitle').value || 'Judul Berita';
+      const excerpt = document.getElementById('jExcerpt').value || 'Ringkasan berita akan muncul di sini sebagai cuplikan meta description Google...';
+      
+      document.getElementById('jPreviewTitle').textContent = `${title} | VIRAL FOR JUSTICE`;
+      document.getElementById('jPreviewDesc').textContent = excerpt;
+    }
+
+    function handleJurnalisSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('jTitle').value.trim();
+      const category = document.getElementById('jCategory').value;
+      const author = document.getElementById('jAuthor').value.trim();
+      const image = document.getElementById('jImage').value.trim();
+      const readTime = document.getElementById('jReadTime').value.trim();
+      const excerpt = document.getElementById('jExcerpt').value.trim();
+      const quote = document.getElementById('jQuote').value.trim();
+      const contentText = document.getElementById('jContent').value.trim();
+
+      const categoryLabels = {
+        'hukum': 'HUKUM & KRIMINAL',
+        'korupsi': 'KORUPSI & BANSOS',
+        'ham': 'PELANGGARAN HAM',
+        'tanah': 'KONFLIK AGRARIA',
+        'digital': 'KEJAHATAN SIBER',
+        'lingkungan': 'KERUSAKAN LINGKUNGAN'
+      };
+
+      const newArticle = {
+        id: Date.now(),
+        category: category,
+        categoryLabel: categoryLabels[category] || 'INVESTIGASI',
+        title: title,
+        excerpt: excerpt,
+        image: image || 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
+        author: author || 'Diana Lestari (Tim Investigasi)',
+        date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+        timeAgo: 'Baru Saja',
+        readTime: readTime || '5 Menit Baca',
+        viralScore: '97.2%',
+        shares: 0,
+        supports: 1,
+        isVerified: true,
+        urgency: 'Liputan Lapangan',
+        content: `
+          <p class="lead">${excerpt}</p>
+          ${quote ? `
+            <div class="evidence-quote-box">
+              <strong><i class="fa-solid fa-file-invoice"></i> TEMUAN BUKTI REDAKSI:</strong>
+              "${quote}"
+            </div>
+          ` : ''}
+          <p>${contentText.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>')}</p>
+        `
+      };
+
+      articlesData.unshift(newArticle);
+      localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+
+      // Also add to Case Tracker
+      const newTracker = {
+        id: `TRK-00${caseTrackerData.length + 1}`,
+        ticketCode: `V4J-2026-${Math.floor(10000 + Math.random() * 90000)}`,
+        title: title,
+        category: categoryLabels[category],
+        status: 'viral',
+        statusLabel: '🔴 Viralisasi Publik',
+        stage: 2,
+        publicAttention: 'Liputan Baru',
+        supporters: '1 Kawal',
+        updated: 'Baru Saja',
+        summary: excerpt
+      };
+      caseTrackerData.unshift(newTracker);
+      localStorage.setItem('v4j_custom_trackers', JSON.stringify(caseTrackerData));
+
+      showToast('🎉 Berita liputan berhasil diterbitkan ke portal!');
+      document.getElementById('jurnalisNewsForm').reset();
+      renderJurnalisDesk();
+    }
+
+    function renderJurnalisDesk() {
+      loadStoredData();
+      document.getElementById('jurnalisArticleCount').textContent = articlesData.length;
+
+      const tbody = document.getElementById('jurnalisArticlesTable');
+      if (tbody) {
+        tbody.innerHTML = articlesData.map(a => `
+          <tr>
+            <td><strong>${a.title}</strong></td>
+            <td><span class="badge-tag badge-black">${a.categoryLabel}</span></td>
+            <td>${a.date}</td>
+            <td><span class="text-xs text-crimson font-bold"><i class="fa-solid fa-circle-check"></i> Published</span></td>
+            <td>
+              <a href="article.html?id=${a.id}" target="_blank" class="btn btn-sm-outline"><i class="fa-solid fa-arrow-up-right-from-square"></i> Lihat Halaman</a>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      const asbody = document.getElementById('jurnalisAssignmentsTable');
+      if (asbody) {
+        asbody.innerHTML = caseTrackerData.map(r => `
+          <tr>
+            <td><code>${r.ticketCode}</code></td>
+            <td><strong>${r.title}</strong></td>
+            <td>${r.category}</td>
+            <td><span class="tc-status-badge status-${r.status}">${r.statusLabel}</span></td>
+            <td>
+              <button class="btn btn-sm-outline" onclick="switchJurnalisTab('writeTab'); document.getElementById('jTitle').value='Investigasi: ' + '${r.title.replace(/'/g, "\\'")}'; updateJurnalisPreview();">
+                <i class="fa-solid fa-pen-nib"></i> Tulis Laporan
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderJurnalisDesk();
+      updateJurnalisPreview();
+    });
+  </script>
+</body>
+</html>

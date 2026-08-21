@@ -1,0 +1,6 @@
+# Robots.txt for Viral For Justice
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://viralforjustice.com/sitemap.xml

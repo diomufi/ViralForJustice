@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Viral For Justice - Platform Jurnalisme Advokasi, Pengawalan Kasus Hukum, HAM, dan Suara Keadilan Publik.">
+  <meta name="keywords" content="viral for justice, berita hukum, kawal kasus, advokasi HAM, whistleblower, keadilan publik, investigasi, no viral no justice">
+  <meta name="author" content="Dewan Redaksi Viral For Justice">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://viralforjustice.com/">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://viralforjustice.com/">
+  <meta property="og:title" content="VIRAL FOR JUSTICE - Berani Mengawal, Menuntut Keadilan">
+  <meta property="og:description" content="Platform Jurnalisme Advokasi, Pengawalan Kasus Hukum, HAM, Whistleblower, dan Suara Keadilan Publik.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VIRAL FOR JUSTICE - Berani Mengawal, Menuntut Keadilan">
+  <meta name="twitter:description" content="Platform Jurnalisme Advokasi, Pengawalan Kasus Hukum, HAM, Whistleblower, dan Suara Keadilan Publik.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80">
+
+  <title>VIRAL FOR JUSTICE - Berani Mengawal, Menuntut Keadilan</title>
+  
+  <!-- Structured Data: Schema.org NewsArticle & Organization for Google News / Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "VIRAL FOR JUSTICE",
+    "url": "https://viralforjustice.com/",
+    "logo": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=500&q=80",
+    "sameAs": [
+      "https://twitter.com/viralforjustice",
+      "https://instagram.com/viralforjustice",
+      "https://t.me/viralforjustice"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800;900&family=Inter:wght@400;500;600;700&family=Oswald:wght@600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement / Breaking Ticker -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="breaking-badge">
+        <span class="live-pulse"></span>
+        <i class="fa-solid fa-bolt"></i> BREAKING
+      </div>
+      <div class="ticker-wrapper">
+        <div class="ticker-track" id="tickerTrack">
+          <span class="ticker-item"><i class="fa-solid fa-triangle-exclamation text-crimson"></i> <strong>#KawalKasus:</strong> Portal Whistleblower & Case Tracker resmi dibuka untuk publik.</span>
+          <span class="ticker-item"><i class="fa-solid fa-triangle-exclamation text-crimson"></i> <strong>#ViralUpdate:</strong> Laporkan dugaan pelanggaran hukum di sekitar Anda secara aman dan anonim.</span>
+          <span class="ticker-item"><i class="fa-solid fa-triangle-exclamation text-crimson"></i> <strong>#Manifesto:</strong> Mengubah viralisasi sosial menjadi kekuatan advokasi hukum terverifikasi.</span>
+        </div>
+      </div>
+      <div class="top-bar-actions" style="display: flex; align-items: center; gap: 1rem;">
+        <span class="date-time" id="liveDateTime"><i class="fa-regular fa-clock"></i> Memuat...</span>
+        <a href="login.html" style="color: var(--color-crimson-light); font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
+          <i class="fa-solid fa-lock"></i> Login Office & Redaksi
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <!-- Left: Mobile Menu Toggle & Brand Logo -->
+      <div class="header-left">
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Buka Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <!-- Brand Logo with Precise 3D Badge Styling -->
+        <a href="#" class="brand-logo" title="Viral For Justice - Beranda">
+          <div class="logo-box-3d">
+            <div class="logo-text">
+              <span class="word-viral">VIRAL</span>
+              <span class="word-for">FOR</span>
+              <span class="word-justice">JUSTICE</span>
+            </div>
+            <div class="logo-speech-tail"></div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Navigation Menu -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="#heroSection" class="nav-link active"><i class="fa-solid fa-house"></i> Beranda</a></li>
+          <li><a href="#caseTrackerSection" class="nav-link"><i class="fa-solid fa-gauge-high"></i> Kawal Kasus <span class="badge-count">12</span></a></li>
+          <li><a href="#investigasiSection" class="nav-link"><i class="fa-solid fa-magnifying-glass-chart"></i> Investigasi</a></li>
+          <li><a href="#suaraWargaSection" class="nav-link"><i class="fa-solid fa-bullhorn"></i> Suara Publik</a></li>
+          <li><a href="#cekFaktaSection" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Cek Fakta</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Search & Action Button -->
+      <div class="header-right">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Cari kasus, tokoh, topik..." autocomplete="off">
+          <button id="searchBtn" aria-label="Cari Berita" style="display: none;"></button>
+        </div>
+        <button class="btn btn-report" id="openReportModalBtn" onclick="openReportModal()">
+          <span class="pulse-dot"></span>
+          <i class="fa-solid fa-bullhorn"></i> <span>Kirim Laporan</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Quick Bar -->
+  <div class="category-strip">
+    <div class="container category-container">
+      <div class="tags-label"><i class="fa-solid fa-fire text-crimson"></i> TRENDING:</div>
+      <div class="category-chips" id="categoryChips">
+        <button class="chip active" data-cat="all">Semua Kasus</button>
+        <button class="chip" data-cat="hukum"><i class="fa-solid fa-scale-balanced"></i> Hukum & Kriminal</button>
+        <button class="chip" data-cat="ham"><i class="fa-solid fa-hand-fist"></i> Pelanggaran HAM</button>
+        <button class="chip" data-cat="korupsi"><i class="fa-solid fa-sack-dollar"></i> Korupsi & Bansos</button>
+        <button class="chip" data-cat="tanah"><i class="fa-solid fa-mountain-city"></i> Konflik Agraria</button>
+        <button class="chip" data-cat="digital"><i class="fa-solid fa-user-secret"></i> Kejahatan Siber</button>
+        <button class="chip" data-cat="lingkungan"><i class="fa-solid fa-tree"></i> Kerusakan Lingkungan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Body -->
+  <main class="main-wrapper">
+    
+    <!-- Hero Section: Featured Investigative Piece -->
+    <section class="hero-section" id="heroSection">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Big Featured Story: Introductory Article -->
+          <article class="featured-card" id="featuredArticle">
+            <div class="featured-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80" alt="Mengenal Viral For Justice" class="featured-img">
+              <div class="image-overlay"></div>
+              <div class="featured-badges">
+                <span class="badge-tag badge-red"><i class="fa-solid fa-bullhorn"></i> PENGENALAN RESMI</span>
+                <span class="badge-tag badge-black"><i class="fa-solid fa-scale-balanced"></i> MANIFESTO PLATFORM</span>
+              </div>
+              <div class="viral-meter-pill">
+                <span class="viral-icon">🔥</span>
+                <div class="viral-info">
+                  <span class="viral-score">VIRAL INDEX: 99.8%</span>
+                  <span class="viral-sub">Peluncuran Resmi • Advokasi Publik</span>
+                </div>
+              </div>
+            </div>
+            <div class="featured-content">
+              <div class="meta-row">
+                <span class="meta-item"><i class="fa-regular fa-clock"></i> Baru Saja</span>
+                <span class="meta-item"><i class="fa-solid fa-user-pen"></i> Dewan Redaksi V4J</span>
+                <span class="meta-item text-crimson"><i class="fa-solid fa-circle-check"></i> Pernyataan Resmi</span>
+              </div>
+              <h1 class="featured-title">
+                <a href="article.html?id=1" style="color: inherit; text-decoration: none;">
+                  Mengenal VIRAL FOR JUSTICE: Platform Jurnalisme Advokasi, Whistleblower, dan Pengawalan Keadilan Publik
+                </a>
+              </h1>
+              <p class="featured-excerpt">
+                Viral For Justice hadir sebagai wadah independen untuk menjembatani suara korban ketidakadilan, membongkar kebenaran melalui investigasi berbasis data bukti, dan mengawal proses hukum bersama jutaan warganet secara transparan.
+              </p>
+              <div class="featured-footer">
+                <a href="article.html?id=1" class="btn btn-crimson">
+                  <i class="fa-solid fa-book-open"></i> Baca Halaman Berita Lengkap
+                </a>
+                <button class="btn btn-outline-dark" onclick="shareArticle('Mengenal VIRAL FOR JUSTICE - Platform Jurnalisme Advokasi Publik')">
+                  <i class="fa-solid fa-share-nodes"></i> Bagikan Berita
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sidebar: Urgent Cases & Action Meter -->
+          <aside class="hero-sidebar">
+            <div class="card sidebar-box urgent-box">
+              <div class="sidebar-header">
+                <h3><i class="fa-solid fa-shield-halved text-crimson"></i> 3 PILAR UTAMA KAMI</h3>
+                <span class="live-dot">AKTIF</span>
+              </div>
+              <p class="sidebar-sub">Komitmen independen dalam membela hak publik.</p>
+              
+              <div class="urgent-list">
+                <div class="urgent-item" onclick="openReportModal()">
+                  <span class="urgent-number">01</span>
+                  <div class="urgent-info">
+                    <span class="urgent-tag">PORTAL WHISTLEBLOWER</span>
+                    <h4>Lapor Ketidakadilan Secara 100% Anonim & Terenkripsi</h4>
+                    <p class="text-xs text-muted">Perlindungan identitas saksi dan korban dengan enkripsi data ketat.</p>
+                  </div>
+                </div>
+
+                <div class="urgent-item" onclick="document.getElementById('caseTrackerSection').scrollIntoView({behavior: 'smooth'})">
+                  <span class="urgent-number">02</span>
+                  <div class="urgent-info">
+                    <span class="urgent-tag">CASE TRACKER</span>
+                    <h4>Transparansi Pengawalan Status Kasus Publik</h4>
+                    <p class="text-xs text-muted">Pantau perjalanan kasus dari investigasi hingga tuntas berkeadilan.</p>
+                  </div>
+                </div>
+
+                <div class="urgent-item" onclick="openArticleModal(1)">
+                  <span class="urgent-number">03</span>
+                  <div class="urgent-info">
+                    <span class="urgent-tag">JURNALISME ADVOKASI</span>
+                    <h4>Verifikasi Bukti Digital & Kolaborasi Bantuan Hukum</h4>
+                    <p class="text-xs text-muted">Menyajikan fakta teruji dan pendampingan advokasi hukum bersama LBH.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Red Whistleblower Callout -->
+            <div class="card whistleblower-banner">
+              <div class="wb-content">
+                <div class="wb-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <div>
+                  <h4>Tahu Ketidakadilan di Sekitarmu?</h4>
+                  <p>Lapor anonim & aman. Identitasmu dienkripsi redaksi.</p>
+                </div>
+              </div>
+              <button class="btn btn-white-banner" onclick="openReportModal()">
+                <i class="fa-solid fa-paper-plane"></i> Buat Pengaduan Sekarang
+              </button>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Tracker Section (Kawal Kasus) -->
+    <section class="section-tracker" id="caseTrackerSection">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-pill"><i class="fa-solid fa-gauge-high"></i> PUBLIC CASE TRACKER</span>
+            <h2 class="section-title">Papan Pantau Pengawalan Kasus (Case Tracker)</h2>
+            <p class="section-desc">Transparansi progres penanganan kasus dari laporan publik hingga kepastian hukum yang adil.</p>
+          </div>
+          <div class="tracker-filter-tabs">
+            <button class="tracker-tab active" data-status="all">Semua Status (12)</button>
+            <button class="tracker-tab" data-status="investigasi">🟡 Investigasi (4)</button>
+            <button class="tracker-tab" data-status="viral">🔴 Viralisasi (5)</button>
+            <button class="tracker-tab" data-status="hukum">🔵 Proses Hukum (2)</button>
+            <button class="tracker-tab" data-status="tuntas">🟢 Keadilan Tercapai (1)</button>
+          </div>
+        </div>
+
+        <div class="tracker-grid" id="trackerGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Articles Grid Section -->
+    <section class="section-news" id="investigasiSection">
+      <div class="container">
+        
+        <div class="section-header-compact">
+          <div class="section-title-wrap">
+            <span class="section-pill"><i class="fa-solid fa-newspaper"></i> LIPUTAN & ARTIKEL TERBARU</span>
+            <h2 class="section-title">Berita Investigasi & Suara Kebenaran</h2>
+          </div>
+          <div class="view-toggle">
+            <span id="resultsCount" class="results-text">Menampilkan 6 artikel</span>
+          </div>
+        </div>
+
+        <div class="news-grid" id="newsGrid">
+          <!-- Populated dynamically by JavaScript -->
+        </div>
+
+        <!-- Pagination / Load More -->
+        <div class="load-more-wrap">
+          <button class="btn btn-load-more" id="loadMoreBtn" onclick="loadMoreArticles()">
+            <i class="fa-solid fa-arrows-rotate"></i> Muat Lebih Banyak Laporan Berita
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Whistleblower Public Report CTA Section -->
+    <section class="section-cta-report" id="suaraWargaSection">
+      <div class="container">
+        <div class="report-cta-box">
+          <div class="report-cta-text">
+            <span class="badge-cta"><i class="fa-solid fa-lock"></i> 100% ANONYMOUS & ENCRYPTED</span>
+            <h2>Jangan Takut Bersuara, Kami Kawal Bersama Publik</h2>
+            <p>
+              Viral For Justice berkomitmen melindungi saksi dan pelapor tindak pidana korupsi, kesewenang-wenangan aparat, dan ketidakadilan sosial. Setiap laporan akan diverifikasi secara ketat oleh tim redaksi sebelum dipublikasikan.
+            </p>
+            <div class="guarantee-points">
+              <div class="gp-item"><i class="fa-solid fa-check-double text-crimson"></i> Kerahasiaan Identitas Dijamin</div>
+              <div class="gp-item"><i class="fa-solid fa-check-double text-crimson"></i> Verifikasi Bukti Digital</div>
+              <div class="gp-item"><i class="fa-solid fa-check-double text-crimson"></i> Bantuan Jaringan Advokasi Hukum</div>
+            </div>
+          </div>
+          <div class="report-cta-action">
+            <div class="card-report-preview">
+              <div class="crp-header">
+                <i class="fa-solid fa-file-shield text-crimson text-2xl"></i>
+                <div>
+                  <strong>Form Pengaduan Whistleblower</strong>
+                  <p class="text-xs text-muted">Aman • Terenkripsi • Terpantau</p>
+                </div>
+              </div>
+              <button class="btn btn-crimson btn-block" onclick="openReportModal()">
+                <i class="fa-solid fa-paper-plane"></i> Mulai Buat Laporan Pengaduan
+              </button>
+              <button class="btn btn-outline-white btn-block" onclick="openTrackerSearchModal()">
+                <i class="fa-solid fa-receipt"></i> Cek Status Laporan Saya (Kode Tiket)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fact Check Banner (Cek Fakta) -->
+    <section class="section-factcheck" id="cekFaktaSection">
+      <div class="container">
+        <div class="factcheck-card">
+          <div class="factcheck-badge">
+            <i class="fa-solid fa-check-to-slot"></i> CEK FAKTA & KLARIFIKASI V4J
+          </div>
+          <div class="factcheck-content">
+            <div class="factcheck-verdict verdict-false">
+              <i class="fa-solid fa-xmark"></i> HOAKS / MENYESATKAN
+            </div>
+            <div class="factcheck-text">
+              <h3>Bantahan: Video Klaim 'Massa Kepung Kantor Kejaksaan' Merupakan Rekaman Aksi Tahun 2019 yang Disunting</h3>
+              <p>Hasil penelusuran tim Cek Fakta Viral For Justice menunjukkan video yang beredar di TikTok dan X adalah hoaks daur ulang dengan manipulasi teks audio.</p>
+            </div>
+            <button class="btn btn-sm-outline" onclick="openArticleModal(5)">
+              Lihat Analisis Fakta <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo-box-3d small-logo">
+          <div class="logo-text">
+            <span class="word-viral">VIRAL</span>
+            <span class="word-for">FOR</span>
+            <span class="word-justice">JUSTICE</span>
+          </div>
+        </div>
+        <p class="footer-tagline">
+          Portal Berita Advokasi & Gerakan Kawal Keadilan Sosial Berbasis Jurnalisme Independen dan Partisipasi Publik.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kategori Kasus</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('hukum')">Hukum & Kriminal</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('ham')">Hak Asasi Manusia</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('korupsi')">Korupsi & Transparansi</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('tanah')">Konflik Agraria</a></li>
+          <li><a href="javascript:void(0)" onclick="filterByCategory('digital')">Kejahatan Siber</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Ruang Publik</h4>
+        <ul>
+          <li><a href="javascript:void(0)" onclick="openReportModal()">Kirim Laporan Kasus</a></li>
+          <li><a href="#caseTrackerSection">Public Case Tracker</a></li>
+          <li><a href="#cekFaktaSection">Kanal Cek Fakta</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Pedoman Media Siber V4J di bawah Dewan Pers')">Pedoman Media Siber</a></li>
+          <li><a href="javascript:void(0)" onclick="showToast('Kode Etik Jurnalistik Advokasi Publik')">Kode Etik Jurnalistik</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Advokasi & Kerjasama</h4>
+        <p class="footer-contact-info">
+          <i class="fa-solid fa-envelope"></i> redaksi@viralforjustice.com<br>
+          <i class="fa-solid fa-lock"></i> PGP Key: 0x9B4E...V4J<br>
+          <i class="fa-solid fa-location-dot"></i> Jakarta, Indonesia
+        </p>
+        <div class="newsletter-box">
+          <span>Dapatkan Buletin Mingguan:</span>
+          <div class="newsletter-form">
+            <input type="email" id="newsletterEmail" placeholder="Masukkan email...">
+            <button onclick="subscribeNewsletter()"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; 2026 <strong>VIRAL FOR JUSTICE</strong>. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+        <div class="footer-legal">
+          <a href="javascript:void(0)" onclick="showToast('Kebijakan Privasi: Identitas pelapor dilindungi standar UU PDP')">Kebijakan Privasi & Perlindungan Saksi</a>
+          <span>•</span>
+          <a href="javascript:void(0)" onclick="showToast('Disclaimer: Seluruh laporan diverifikasi sebelum tayang')">Disclaimer Redaksi</a>
+          <span>•</span>
+          <a href="javascript:void(0)" onclick="showToast('Pedoman Hak Cipta & Creative Commons')">Pedoman Hak Cipta</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: Whistleblower Report Submission Form -->
+  <div class="modal-overlay" id="reportModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-header bg-crimson text-white">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-bullhorn text-2xl"></i>
+          <div>
+            <h3>Formulir Pengaduan Kasus (Whistleblower Portal)</h3>
+            <p>Laporan Anda akan dienkripsi dan dianalisis secara rahasia oleh tim redaksi.</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeReportModal()">&times;</button>
+      </div>
+
+      <form id="whistleblowerForm" onsubmit="submitWhistleblowerReport(event)">
+        <div class="modal-body">
+          
+          <!-- Identity Privacy Toggle -->
+          <div class="privacy-selector-card">
+            <label class="privacy-opt">
+              <input type="radio" name="reporterType" value="anonymous" checked onchange="toggleIdentityFields(this.value)">
+              <div class="opt-card">
+                <i class="fa-solid fa-user-secret text-crimson"></i>
+                <div>
+                  <strong>Kirim Sebagai Anonim (Direkomendasikan)</strong>
+                  <p>Nama dan kontak tidak akan disimpan di server publik.</p>
+                </div>
+              </div>
+            </label>
+            <label class="privacy-opt">
+              <input type="radio" name="reporterType" value="verified" onchange="toggleIdentityFields(this.value)">
+              <div class="opt-card">
+                <i class="fa-solid fa-id-card-clip text-black"></i>
+                <div>
+                  <strong>Kirim Identitas Lengkap</strong>
+                  <p>Untuk memudahkan komunikasi tim advokasi jika dibutuhkan pendampingan hukum.</p>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div id="verifiedFields" class="form-row hidden">
+            <div class="form-group col-6">
+              <label for="reporterName">Nama Lengkap / Samaran</label>
+              <input type="text" id="reporterName" class="form-control" placeholder="Contoh: Budi Santoso">
+            </div>
+            <div class="form-group col-6">
+              <label for="reporterContact">Nomor WhatsApp / Telegram / Email</label>
+              <input type="text" id="reporterContact" class="form-control" placeholder="0812xxxx atau @username">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-8">
+              <label for="caseTitle">Judul Inti Dugaan Kasus <span class="text-crimson">*</span></label>
+              <input type="text" id="caseTitle" class="form-control" placeholder="Contoh: Pemotongan Dana Bansos 40% di Kecamatan X" required>
+            </div>
+            <div class="form-group col-4">
+              <label for="caseCategory">Kategori Kasus <span class="text-crimson">*</span></label>
+              <select id="caseCategory" class="form-control" required>
+                <option value="">Pilih Kategori...</option>
+                <option value="korupsi">Korupsi / Pungli / Anggaran</option>
+                <option value="hukum">Kriminalisasi & Aparat</option>
+                <option value="ham">Pelanggaran HAM</option>
+                <option value="tanah">Sengketa Tanah / Agraria</option>
+                <option value="ketenagakerjaan">Hak Buruh / Pekerja</option>
+                <option value="lainnya">Lainnya</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label for="caseLocation">Lokasi Kejadian (Kota/Kabupaten, Provinsi) <span class="text-crimson">*</span></label>
+              <input type="text" id="caseLocation" class="form-control" placeholder="Contoh: Kab. Bogor, Jawa Barat" required>
+            </div>
+            <div class="form-group col-6">
+              <label for="caseUrgency">Tingkat Urgensi <span class="text-crimson">*</span></label>
+              <select id="caseUrgency" class="form-control" required>
+                <option value="tinggi">🚨 Sangat Mendesak (Ada ancaman fisik/korban ditahan)</option>
+                <option value="sedang">⚠️ Sedang (Kasus mandek/butuh viralitas segera)</option>
+                <option value="rendah">ℹ️ Investigasi Lanjutan (Informasi awal/dokumen)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="caseChronology">Kronologi Lengkap & Pihak yang Terlibat <span class="text-crimson">*</span></label>
+            <textarea id="caseChronology" rows="5" class="form-control" placeholder="Jelaskan secara runtut tanggal kejadian, instansi/oknum terkait, dan dampak yang dialami korban..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Lampirkan Dokumen / Foto / Video Bukti (Maks 25MB)</label>
+            <div class="file-dropzone" id="fileDropzone" onclick="document.getElementById('evidenceFileInput').click()">
+              <i class="fa-solid fa-cloud-arrow-up text-crimson text-3xl"></i>
+              <p>Tarik & lepaskan file bukti di sini atau <span class="text-crimson font-bold">Pilih Berkas</span></p>
+              <span class="text-xs text-muted">Mendukung format: PDF, JPG, PNG, MP4, MP3, DOCX (Metadata sensitif dibersihkan otomatis)</span>
+              <input type="file" id="evidenceFileInput" multiple style="display: none;" onchange="handleFileSelect(event)">
+            </div>
+            <div id="fileListPreview" class="file-list-preview"></div>
+          </div>
+
+          <div class="form-agreement">
+            <label class="checkbox-label">
+              <input type="checkbox" required>
+              <span>Saya menyatakan bahwa informasi dan bukti yang disampaikan adalah benar adanya dan siap dipertanggungjawabkan demi kepentingan keadilan publik.</span>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeReportModal()">Batal</button>
+          <button type="submit" class="btn btn-crimson" id="submitReportBtn">
+            <i class="fa-solid fa-shield-halved"></i> Kirim Laporan & Generate Tiket Kasus
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Success Report Confirmation -->
+  <div class="modal-overlay" id="reportSuccessModal">
+    <div class="modal-card modal-md text-center">
+      <div class="modal-body p-8">
+        <div class="success-icon-wrap">
+          <i class="fa-solid fa-circle-check text-crimson text-5xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mt-4">Laporan Berhasil Diterima Redaksi!</h3>
+        <p class="text-muted mt-2">
+          Terima kasih atas keberanian Anda menyuarakan kebenaran. Laporan telah dienkripsi dan masuk dalam antrean verifikasi tim jurnalis independen.
+        </p>
+        
+        <div class="ticket-code-box">
+          <span class="text-xs text-muted">KODE TIKET PEMANTAUAN ANDA:</span>
+          <div class="ticket-code" id="generatedTicketCode">V4J-2026-89421</div>
+          <button class="btn btn-sm-outline" onclick="copyTicketCode()"><i class="fa-regular fa-copy"></i> Salin Kode</button>
+        </div>
+        
+        <p class="text-xs text-muted mt-3">
+          Simpan kode tiket ini untuk memantau perkembangan verifikasi dan status pengawalan kasus Anda.
+        </p>
+
+        <button class="btn btn-crimson mt-6" onclick="closeSuccessModal()">
+          Tutup & Kembali ke Beranda
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Tracker Ticket Status Search -->
+  <div class="modal-overlay" id="ticketSearchModal">
+    <div class="modal-card modal-md">
+      <div class="modal-header bg-black text-white">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-magnifying-glass text-xl"></i>
+          <div>
+            <h3>Cek Status Pengaduan Kasus</h3>
+            <p>Masukkan kode tiket pengaduan rahasia Anda</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeTrackerSearchModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="ticketInput">Kode Tiket Pengaduan</label>
+          <div class="input-with-btn">
+            <input type="text" id="ticketInput" class="form-control" placeholder="Contoh: V4J-2026-89421" value="V4J-2026-89421">
+            <button class="btn btn-crimson" onclick="checkTicketStatus()"><i class="fa-solid fa-search"></i> Cek Status</button>
+          </div>
+        </div>
+        <div id="ticketResultBox" class="ticket-result-card hidden">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Full Article Reader -->
+  <div class="modal-overlay" id="articleReaderModal">
+    <div class="modal-card modal-xl">
+      <div class="modal-header bg-black text-white">
+        <div class="article-reader-badge" id="readerBadge">LIPUTAN KHUSUS</div>
+        <button class="modal-close" onclick="closeArticleModal()">&times;</button>
+      </div>
+      <div class="modal-body article-reader-body" id="articleReaderContent">
+        <!-- Injected via JavaScript -->
+      </div>
+      <div class="modal-footer article-reader-footer" id="articleReaderFooter">
+        <!-- Share & action buttons -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- JavaScript App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
