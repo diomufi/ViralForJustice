@@ -1,0 +1,6 @@
+# Ignore temporary and binary tools
+cloudflared.exe
+site_deploy.zip
+deploy_netlify.py
+__pycache__/
+*.log
