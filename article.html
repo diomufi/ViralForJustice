@@ -464,36 +464,40 @@
       document.getElementById('articleImage').alt = currentArticleData.title;
       document.getElementById('articleBody').innerHTML = currentArticleData.content;
       document.getElementById('supportCount').textContent = formatNumber(currentArticleData.supports);
-    }
-
-    function handleSupportCurrentArticle() {
+    }    function handleSupportCurrentArticle() {
       if (currentArticleData) {
-        currentArticleData.supports += 1;
+        const key = `v4j_reacted_art_${currentArticleData.id}_support`;
+        if (localStorage.getItem(key)) {
+          showToast("ℹ️ Anda sudah memberikan dukungan kawal untuk artikel ini.");
+          return;
+        }
+        currentArticleData.supports = (currentArticleData.supports || 0) + 1;
         document.getElementById('supportCount').textContent = formatNumber(currentArticleData.supports);
         localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
-        showToast('✊ Terima kasih telah mendukung dan mengawal keadilan kasus ini!');
+        localStorage.setItem(key, 'true');
+        showToast(`✊ Terima kasih! Dukungan nyata Anda telah tercatat (Total: ${currentArticleData.supports} dukungan).`);
       }
     }
 
     function shareTo(platform) {
+      if (currentArticleData) {
+        currentArticleData.shares = (currentArticleData.shares || 0) + 1;
+        localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+      }
       const url = encodeURIComponent(window.location.href);
       const text = encodeURIComponent(`[VIRAL FOR JUSTICE] ${currentArticleData.title}\nBaca laporan lengkap dan kawal bersama di sini: `);
       
-      let shareUrl = '';
-      if (platform === 'wa') {
-        shareUrl = `https://api.whatsapp.com/send?text=${text}%20${url}`;
-      } else if (platform === 'x') {
-        shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
-      } else if (platform === 'fb') {
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-      } else if (platform === 'tg') {
-        shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+      let shareUrl = "";
+      if (platform === 'wa') shareUrl = `https://api.whatsapp.com/send?text=${text}%20${url}`;
+      else if (platform === 'x') shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+      else if (platform === 'fb') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      else if (platform === 'tg') shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+
+      if (shareUrl) {
+        window.open(shareUrl, '_blank', 'width=600,height=500');
+        showToast(`📢 Membuka kanal pembagian ${platform.toUpperCase()}...`);
       }
-
-      window.open(shareUrl, '_blank', 'width=600,height=400');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
+    }document.addEventListener('DOMContentLoaded', () => {
       loadSingleArticlePage();
     });
   </script>

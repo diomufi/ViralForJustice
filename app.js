@@ -14,9 +14,9 @@ const articlesData = [
     date: "21 Agustus 2026",
     timeAgo: "Baru Saja",
     readTime: "4 Menit Baca",
-    viralScore: "99.8%",
-    shares: 12500,
-    supports: 8400,
+    viralScore: "100% Verifikasi",
+    shares: 0,
+    supports: 0,
     isVerified: true,
     urgency: "Manifesto Resmi",
     content: `
@@ -75,8 +75,9 @@ const caseTrackerData = [
     status: "investigasi",
     statusLabel: "🟡 Investigasi",
     stage: 1, // 1: Investigasi, 2: Viral, 3: Proses Hukum, 4: Tuntas
-    publicAttention: "Aktif",
-    supporters: "8.4K Kawal",
+    publicAttention: "Aktif Dipantau",
+    supportersCount: 1,
+    supporters: "1 Dukungan Kawal",
     updated: "Hari Ini",
     summary: "Sistem verifikasi laporan masyarakat telah resmi beroperasi untuk menerima bukti dan aduan publik."
   }
@@ -405,7 +406,22 @@ function initTrackerFilterTabs() {
 }
 
 function supportCase(id) {
-  showToast("✊ Terima kasih! Anda telah terdaftar sebagai pendukung pengawalan kasus ini.");
+  const caseItem = caseTrackerData.find(c => c.id === id);
+  if (!caseItem) return;
+
+  const key = `v4j_supported_case_${id}`;
+  if (localStorage.getItem(key)) {
+    showToast("ℹ️ Anda sudah memberikan dukungan kawal untuk kasus ini.");
+    return;
+  }
+
+  caseItem.supportersCount = (caseItem.supportersCount || 1) + 1;
+  caseItem.supporters = `${caseItem.supportersCount} Dukungan Kawal`;
+  localStorage.setItem('v4j_custom_trackers', JSON.stringify(caseTrackerData));
+  localStorage.setItem(key, "true");
+  
+  renderTrackerCards(activeTrackerStatus);
+  showToast(`✊ Terima kasih! Dukungan nyata Anda telah tercatat (Total: ${caseItem.supportersCount} orang mengawal).`);
 }
 
 // ==========================================
@@ -441,21 +457,14 @@ function closeReportModal() {
   }
 }
 
-function toggleIdentityFields(val) {
-  const fields = document.getElementById("verifiedFields");
-  if (fields) {
-    if (val === "verified") {
-      fields.classList.remove("hidden");
-    } else {
-      fields.classList.add("hidden");
-    }
-  }
-}
-
 function initDropzone() {
-  const dropzone = document.getElementById("fileDropzone");
-  const input = document.getElementById("evidenceFileInput");
-  if (!dropzone || !input) return;
+  const dropzone = document.getElementById("dropzone");
+  const fileInput = document.getElementById("fileInput");
+  const preview = document.getElementById("fileListPreview");
+
+  if (!dropzone || !fileInput) return;
+
+  dropzone.addEventListener("click", () => fileInput.click());
 
   dropzone.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -463,40 +472,61 @@ function initDropzone() {
   });
 
   dropzone.addEventListener("dragleave", () => {
-    dropzone.style.borderColor = "var(--color-gray-300)";
+    dropzone.style.borderColor = "var(--color-gray-400)";
   });
 
   dropzone.addEventListener("drop", (e) => {
     e.preventDefault();
-    dropzone.style.borderColor = "var(--color-gray-300)";
-    if (e.dataTransfer.files) {
-      handleFiles(e.dataTransfer.files);
-    }
+    dropzone.style.borderColor = "var(--color-gray-400)";
+    handleFiles(e.dataTransfer.files);
   });
-}
 
-function handleFileSelect(e) {
-  if (e.target.files) {
+  fileInput.addEventListener("change", (e) => {
     handleFiles(e.target.files);
+  });
+
+  function handleFiles(files) {
+    for (let file of files) {
+      uploadedFiles.push(file);
+    }
+    renderFilePreview();
+  }
+
+  function renderFilePreview() {
+    if (!preview) return;
+    preview.innerHTML = uploadedFiles.map((file, idx) => `
+      <div class="file-item">
+        <span><i class="fa-solid fa-file-shield text-crimson"></i> ${file.name} (${(file.size / 1024).toFixed(1)} KB)</span>
+        <button type="button" class="btn-remove-file" onclick="removeFile(${idx})"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    `).join("");
   }
 }
 
-function handleFiles(files) {
+function removeFile(index) {
+  uploadedFiles.splice(index, 1);
   const preview = document.getElementById("fileListPreview");
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    uploadedFiles.push(file);
-    if (preview) {
-      const item = document.createElement("div");
-      item.className = "file-preview-item";
-      item.innerHTML = `
-        <span><i class="fa-solid fa-file-shield text-crimson"></i> ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)</span>
-        <span class="text-xs text-muted"><i class="fa-solid fa-lock"></i> Enkripsi Siap</span>
-      `;
-      preview.appendChild(item);
-    }
+  if (preview) {
+    preview.innerHTML = uploadedFiles.map((file, idx) => `
+      <div class="file-item">
+        <span><i class="fa-solid fa-file-shield text-crimson"></i> ${file.name} (${(file.size / 1024).toFixed(1)} KB)</span>
+        <button type="button" class="btn-remove-file" onclick="removeFile(${idx})"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    `).join("");
   }
-  showToast(`📁 ${files.length} file bukti berhasil dilampirkan.`);
+}
+
+function setPrivacy(type) {
+  const cards = document.querySelectorAll(".privacy-card");
+  cards.forEach(c => c.classList.remove("selected"));
+  
+  if (type === 'anon') {
+    cards[0].classList.add("selected");
+    document.getElementById("reporterNameGroup").style.display = "none";
+  } else {
+    cards[1].classList.add("selected");
+    document.getElementById("reporterNameGroup").style.display = "block";
+  }
 }
 
 function submitWhistleblowerReport(e) {
@@ -536,12 +566,14 @@ function submitWhistleblowerReport(e) {
     statusLabel: '🟡 Investigasi',
     stage: 1,
     publicAttention: 'Laporan Baru',
-    supporters: '1 Kawal',
+    supportersCount: 1,
+    supporters: '1 Dukungan Kawal',
     updated: 'Baru Saja',
     summary: chronology.substring(0, 120) + (chronology.length > 120 ? '...' : '')
   };
 
   caseTrackerData.unshift(newTracker);
+  localStorage.setItem('v4j_custom_trackers', JSON.stringify(caseTrackerData));
   renderTrackerCards(activeTrackerStatus);
 
   // Close report modal & open success modal
@@ -632,19 +664,36 @@ function openTrackerDetail(ticketCode) {
 
 function reactArticle(id, type) {
   const article = articlesData.find(a => a.id === id);
-  if (article && type === "support") {
-    article.supports += 1;
+  if (!article) return;
+
+  const key = `v4j_reacted_art_${id}_${type}`;
+  if (localStorage.getItem(key)) {
+    showToast("ℹ️ Anda sudah memberikan dukungan kawal untuk artikel ini.");
+    return;
+  }
+
+  if (type === "support") {
+    article.supports = (article.supports || 0) + 1;
+    localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+    localStorage.setItem(key, "true");
+    
     const btn = document.getElementById(`btn-support-${id}`);
     if (btn) {
       btn.querySelector("span").textContent = formatNumber(article.supports);
       btn.style.color = "var(--color-crimson)";
     }
-    showToast("✊ Anda telah mendukung pengawalan kasus ini!");
+    showToast(`✊ Terima kasih! Dukungan nyata Anda tercatat (Total: ${article.supports} dukungan).`);
   }
 }
 
 function shareArticle(title) {
   const url = window.location.href;
+  if (articlesData.length > 0) {
+    articlesData[0].shares = (articlesData[0].shares || 0) + 1;
+    localStorage.setItem('v4j_custom_articles', JSON.stringify(articlesData));
+    renderNewsGrid(activeCategory);
+  }
+  
   if (navigator.share) {
     navigator.share({
       title: `[VIRAL FOR JUSTICE] ${title}`,
